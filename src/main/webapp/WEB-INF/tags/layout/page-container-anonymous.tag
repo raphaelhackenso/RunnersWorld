@@ -20,44 +20,11 @@
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
-        <a class="navbar-brand" href="">RunnersWorld</a>
+        <a class="navbar-brand" href="/aSpeedRuns">RunnersWorld</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
         </button>
-
-            <%-- TODO the href uptop ? TODO Ask here
-        <%-- TODO -> change accordingly
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-    <c:if test="${activePage == 'listEmployees' or activePage == 'editEmployee'}">
-        <c:set var="employeesMenuActive">active</c:set>
-    </c:if>
-    <li class="nav-item ${employeesMenuActive} dropdown">
-    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-    aria-haspopup="true" aria-expanded="false">
-    Employee
-    </a>
-    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-    <a class="dropdown-item" href="/listEmployees">List Employee</a>
-
-    <sec:authorize access="hasAuthority('ROLE_ADMIN')">
-        <a class="dropdown-item" href="/editEmployee">Create Employee</a>
-
-    </sec:authorize>
-
-
-    </div>
-    </li>
-    </ul>
-     --%>
-
-        Logged in as ${currentUser.username}
-
-        <form:form method="post" action="/logout">
-            <button class="btn btn-link" type="submit">Log Out</button>
-        </form:form>
 
 
         </div>

@@ -10,7 +10,7 @@ import javax.persistence.GenerationType
 import javax.persistence.Id
 
 @Entity
-class Game (
+class Platform (
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         var id: Int? = null,
@@ -18,24 +18,20 @@ class Game (
         @OneToMany(fetch = FetchType.EAGER)
         var speedRuns: Set<SpeedRun>? = null,
 
-        var name: String? = null,
-        var language: String? = null,
-        var version: Double? = null,
-        var releaseYear: LocalDate? = null
+        var name: String? = null
 
 
 
 
-
-) : Comparable<Game>, Serializable {
-    override fun compareTo(other: Game): Int {
+) : Comparable<Platform>, Serializable {
+    override fun compareTo(other: Platform): Int {
         return compareValues(id, other.id)
     }
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false
-        other as Game
+        other as Platform
         if (id != other.id) return false
         return true
     }

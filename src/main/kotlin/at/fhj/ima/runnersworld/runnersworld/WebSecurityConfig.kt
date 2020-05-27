@@ -19,15 +19,9 @@ class WebSecurityConfig : WebSecurityConfigurerAdapter() {
         http
                 .authorizeRequests()
 
-                .antMatchers("/").permitAll() // TODO <-- isn't this super insecure because it's the context root ? TODO Ask here
-
+                .antMatchers("/").permitAll()
                 .antMatchers("/aSpeedRuns").permitAll()
 
-                //TODO Ask why do i get directed to custom.js
-                //TODO -> url below
-                //.antMatchers("/anonymousHomepage").permitAll()
-                //.antMatchers("/anonymous").permitAll()
-                //.antMatchers("/anonymous3").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()

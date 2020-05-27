@@ -20,7 +20,10 @@ class User(
         var role: UserRole? = null,
 
         @OneToMany(fetch = FetchType.EAGER)
-        var speedruns: Set<SpeedRun>? = null
+        var speedruns: Set<SpeedRun>? = null,
+
+        @OneToMany
+        var runValidations: Set<RunValidation>? = null
 
 
 ) : Comparable<User>, Serializable {

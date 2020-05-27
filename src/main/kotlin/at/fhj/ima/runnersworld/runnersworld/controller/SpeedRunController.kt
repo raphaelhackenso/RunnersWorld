@@ -1,6 +1,7 @@
 package at.fhj.ima.runnersworld.runnersworld.controller
 
 import at.fhj.ima.runnersworld.runnersworld.repository.SpeedRunRepository
+import org.springframework.data.domain.Sort
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.ui.set
@@ -19,7 +20,7 @@ class SpeedRunController(val speedRunRepository: SpeedRunRepository) {
             //TODO search
             //model.set("speedRuns", speedRunRepository.findByTypeOfRun(search))
         } else {
-            model.set("speedRuns", speedRunRepository.findAll())
+            model.set("speedRuns", speedRunRepository.findAll(Sort.by(Sort.Direction.ASC, "inGameTime")))
         }
         return "listSpeedRuns"
     }

@@ -17,13 +17,13 @@ class SpeedRun (
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Int? = null,
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     var game: Game? = null,
 
-    //@ManyToOne
-    //var platform: Platform? = null,
+    @ManyToOne
+    var platform: Platform? = null,
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     var runner: User? = null,
 
     var inGameTime: LocalTime? = null,
@@ -31,13 +31,13 @@ class SpeedRun (
     var validationURL: String? = null,
     var notes: String? = null,
     var date: LocalDate? = null,
-    var state: String? = null
+    var state: String? = null,
 
-    //@OneToOne
-    //var runValidation: RunValidation? = null,
+    @OneToOne
+    var runValidation: RunValidation? = null,
 
-    //@ManyToOne(fetch = FetchType.EAGER)
-    //var typeOfRun: TypeOfRun? = null
+    @ManyToOne
+    var typeOfRun: TypeOfRun? = null
 
 
 ) : Comparable<SpeedRun>, Serializable {

@@ -15,7 +15,7 @@ class Game (
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         var id: Int? = null,
 
-        @OneToMany(fetch = FetchType.EAGER)
+        @OneToMany(fetch = FetchType.EAGER, mappedBy = "game")
         var speedRuns: Set<SpeedRun>? = null,
 
         var name: String? = null,

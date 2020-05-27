@@ -28,6 +28,7 @@
 
 
         </div>
+            <a href="/listSpeedRuns" class="btn btn-link" role="button">Login</a>
         </div>
         </nav>
 

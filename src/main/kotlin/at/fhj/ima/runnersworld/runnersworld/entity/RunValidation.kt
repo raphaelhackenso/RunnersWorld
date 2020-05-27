@@ -16,8 +16,12 @@ class RunValidation (
         @OneToMany(fetch = FetchType.EAGER)
         var speedRuns: Set<SpeedRun>? = null,
 
-        var validatedBy: String? = null,
-        var submittedFrom: String? = null,
+        @ManyToOne
+        var validatedBy: User? = null,
+
+        @ManyToOne
+        var submittedFrom: User? = null,
+
         var status: String? = null,
         var notes: String? = null
 

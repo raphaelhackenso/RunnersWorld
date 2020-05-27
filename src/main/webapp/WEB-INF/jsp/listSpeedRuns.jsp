@@ -60,11 +60,12 @@
                 </thead>
                 <tbody>
                 <!--  list all speedRuns ----------------------------------------------------------- -->
-                <c:forEach items="${speedRuns}" var="speedRun">
+                <c:forEach items="${speedRuns}" var="speedRun" varStatus="Rank">
+
                     <tr>
-                        <td>TODO</td>
+                        <td>${Rank.count}</td>
                         <td>${speedRun.inGameTime}</td>
-                        <td>${speedRun.runner}</td>
+                        <td>${speedRun.runner.username}</td>
                         <td>${speedRun.gameVersion}</td>
                         <td>
                             <fmt:parseDate value="${speedRun.date}" pattern="yyyy-MM-dd" var="parsedDate"

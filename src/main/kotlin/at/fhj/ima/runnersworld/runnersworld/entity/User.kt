@@ -2,6 +2,8 @@ package at.fhj.ima.runnersworld.runnersworld.entity
 
 import java.io.Serializable
 import javax.persistence.*
+import javax.validation.constraints.Size
+
 
 enum class UserRole {
     ROLE_USER,
@@ -9,18 +11,22 @@ enum class UserRole {
 }
 
 @Entity
+@Table(uniqueConstraints = [UniqueConstraint(name = "username_UK", columnNames = ["username"])])
 class User(
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         var id: Int? = null,
         @Column(nullable = false, unique = true)
+        @field:Size(min=2, max=240)
         var username: String? = null,
+        @field:Size(min=2, max=240)
         var password: String? = null,
         @Enumerated(EnumType.STRING)
         var role: UserRole? = null,
 
-        @OneToMany(fetch = FetchType.EAGER)
-        var speedruns: Set<SpeedRun>? = null,
+
+        @OneToMany(mappedBy = "runner")
+        var speedruns: Set<Speedrun>? = null,
 
         @OneToMany
         var runValidations: Set<RunValidation>? = null
@@ -42,4 +48,5 @@ class User(
     override fun hashCode(): Int {
         return id.hashCode()
     }
+
 }

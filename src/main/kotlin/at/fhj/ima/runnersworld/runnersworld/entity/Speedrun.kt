@@ -11,7 +11,7 @@ import javax.persistence.Id
 
 
 @Entity
-class SpeedRun (
+class Speedrun (
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,11 +23,13 @@ class SpeedRun (
     @ManyToOne
     var platform: Platform? = null,
 
+
     @ManyToOne
+    @JoinColumn(name = "runner_id", nullable = false)
     var runner: User? = null,
 
     var inGameTime: LocalTime? = null,
-    var gameVersion: Double? = null,
+    //var gameVersion: Double? = null,
     var validationURL: String? = null,
     var notes: String? = null,
     var date: LocalDate? = null,
@@ -40,15 +42,15 @@ class SpeedRun (
     var typeOfRun: TypeOfRun? = null
 
 
-) : Comparable<SpeedRun>, Serializable {
-    override fun compareTo(other: SpeedRun): Int {
+) : Comparable<Speedrun>, Serializable {
+    override fun compareTo(other: Speedrun): Int {
         return compareValues(id, other.id)
     }
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false
-        other as SpeedRun
+        other as Speedrun
         if (id != other.id) return false
         return true
     }

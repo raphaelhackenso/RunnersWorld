@@ -14,7 +14,7 @@ class RunValidation (
         var id: Int? = null,
 
         @OneToMany(fetch = FetchType.EAGER)
-        var speedRuns: Set<SpeedRun>? = null,
+        var speedruns: Set<Speedrun>? = null,
 
         @ManyToOne
         var validatedBy: User? = null,

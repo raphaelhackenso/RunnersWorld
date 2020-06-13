@@ -17,10 +17,20 @@ class WebSecurityConfig : WebSecurityConfigurerAdapter() {
 
     override fun configure(http: HttpSecurity) {
         http
+
+
                 .authorizeRequests()
+
 
                 .antMatchers("/").permitAll()
                 .antMatchers("/aSpeedRuns").permitAll()
+                .antMatchers("/registerUser").permitAll()
+                .antMatchers("/registerUserAccount").permitAll()
+
+                .antMatchers("/css/custom.css").permitAll()
+                .antMatchers("/js/custom.js").permitAll()
+
+
 
                 .anyRequest().authenticated()
                 .and()

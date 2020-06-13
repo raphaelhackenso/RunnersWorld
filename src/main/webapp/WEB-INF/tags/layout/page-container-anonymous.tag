@@ -26,9 +26,14 @@
         <span class="navbar-toggler-icon"></span>
         </button>
 
-
+        <div>
+        <a href="/registerUser" class="btn btn-link" role="button">Register User</a>
         </div>
-            <a href="/listSpeedRuns" class="btn btn-link" role="button">Login</a>
+
+        <div>
+        <a href="/listSpeedRuns" class="btn btn-link" role="button">Login</a>
+        </div>
+
         </div>
         </nav>
 

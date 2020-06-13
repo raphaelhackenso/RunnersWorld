@@ -6,11 +6,12 @@
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@taglib prefix="bootstrap" tagdir="/WEB-INF/tags/bootstrap" %>
 <%@taglib prefix="layout" tagdir="/WEB-INF/tags/layout" %>
-<%@taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
+<%@taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="sprng" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-
-<layout:page-container title="SpeedRuns" activePage="listSpeedRuns">
+<layout:page-container title="displayUser" activePage="displayUser">
 
     <div class="row">
         <div class="col-md-4">
@@ -30,62 +31,74 @@
                 </button>
             </form>
         </div>
+
+
         <div class="col-md-4">
-            <p>
-                    <%-- TODO change
-                    <sec:authorize access="hasAuthority('ROLE_ADMIN')">
-                        <a href="/editEmployee" class="btn btn-success">Add new Employee</a>
-                    </sec:authorize>
-                        --%>
-            </p>
+            <sec:authorize access="hasAuthority('ROLE_USER')">
+                <p>
+                    <a href="/addSpeedRun" class="btn btn-success">Speedrun hinzufügen</a>
+                </p>
+            </sec:authorize>
         </div>
+
+        <div class="col-md-4">
+            <sec:authorize access="hasAuthority('ROLE_USER')">
+                <p>
+                    <a href="/editUser" class="btn btn-success">Account bearbeiten</a>
+                </p>
+            </sec:authorize>
+        </div>
+
     </div>
 
-
     <div class="row">
-        <div class="col-md-10 col-md-offset-1">
+        <div class="col-md-12 col-md-offset-1">
+            <legend>Speedruns von ${currentUser.username}</legend>
 
             <table data-toggle="table" class="table table-striped">
                 <thead>
                 <tr>
-                    <th data-sortable="true">Rank</th>
-                    <th data-sortable="true">In-Game Time</th>
-                    <th data-sortable="true">Runner</th>
-                    <th data-sortable="true">GameVersion</th>
-                    <th data-sortable="true">Date</th>
-                    <th data-sortable="true">Type of Run</th>
-
-                    <th>Actions</th>
+                    <th data-sortable="true">ID</th>
+                    <th data-sortable="true">Spiel</th>
+                    <th data-sortable="true">Zeit</th>
+                    <th data-sortable="true">Datum</th>
+                    <th data-sortable="true">Typ</th>
+                    <th data-sortable="true">Platform</th>
+                    <th data-sortable="true">Version</th>
+                    <th data-sortable="true">Referenz</th>
+                    <th data-sortable="true">Status</th>
+                    <sec:authorize access="hasAuthority('ROLE_ADMIN')">
+                        <th data-sortable="true">Aktionen</th>
+                    </sec:authorize>
                 </tr>
                 </thead>
                 <tbody>
                 <!--  list all speedRuns ----------------------------------------------------------- -->
-                <c:forEach items="${speedRuns}" var="speedRun" varStatus="Rank">
+                <c:forEach items="${currentUser.speedruns}" var="speedRun" varStatus="Rank">
 
                     <tr>
-                        <td>${Rank.count}</td>
+                        <td>${speedRun.id}</td>
+                        <td>${speedRun.game.name}</td>
                         <td>${speedRun.inGameTime}</td>
-                        <td>${speedRun.runner.username}</td>
-                        <td>${speedRun.game.version}</td>
                         <td>
                             <fmt:parseDate value="${speedRun.date}" pattern="yyyy-MM-dd" var="parsedDate"
                                            type="date"/>
                             <fmt:formatDate value="${parsedDate}" type="date" pattern="dd.MM.yyyy"/>
                         </td>
+                        <td>${speedRun.typeOfRun.category}</td>
+                        <td>${speedRun.platform.name}</td>
+                        <td>${speedRun.game.version}</td>
+                        <td><a href=${speedRun.validationURL}>URL</a></td>
                         <td>
+                            <sec:authorize access="hasAuthority('ROLE_USER')">
+                                ${speedRun.state}
+                            </sec:authorize>
 
-                                <%-- TODO remove/edit
-
-                                <sec:authorize access="hasAuthority('ROLE_ADMIN')">
-                                    <a href="editEmployee?ssn=${employee.ssn}" class="btn btn-xs btn-success">Edit</a>
-
-                                    <form:form method="post" action="/deleteEmployee?ssn=${employee.ssn}">
-                                        <button type="submit" class="btn btn-xs btn-danger">Delete</button>
-                                    </form:form>
-
-                                </sec:authorize>
-
-                                --%>
+                        </td>
+                        <td>
+                            <sec:authorize access="hasAuthority('ROLE_ADMIN')">
+                                <a href="validateSpeedrun?id=${speedRun.id}" class="btn btn-xs btn-success">Validieren</a>
+                            </sec:authorize>
                         </td>
                     </tr>
                 </c:forEach>
@@ -94,5 +107,6 @@
             </table>
         </div>
     </div>
+
 
 </layout:page-container>

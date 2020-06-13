@@ -13,8 +13,9 @@ class TypeOfRun (
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         var id: Int? = null,
 
-        @OneToMany(fetch = FetchType.EAGER)
-        var speedRuns: Set<SpeedRun>? = null,
+        //TODO this is technically not needed
+        //@OneToMany(fetch = FetchType.EAGER)
+        //var speedruns: Set<Speedrun>? = null,
 
         var category: String? = null
 

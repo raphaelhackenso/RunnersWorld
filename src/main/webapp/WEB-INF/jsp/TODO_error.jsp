@@ -6,14 +6,13 @@
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@taglib prefix="bootstrap" tagdir="/WEB-INF/tags/bootstrap" %>
 <%@taglib prefix="layout" tagdir="/WEB-INF/tags/layout" %>
-<%@taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
-<layout:page-container title="listGames" activePage="listGames">
+<layout:page-container title="Error" activePage="error">
 
-    TODO -> list all platforms here
+    <h1>Error</h1>
 
+    <p>Etwas ist beim Besichtigen von ${url} schiefgelaufen.</p>
 
+    <p>Dieses Problem ist aufgetreten: ${exception}</p>
 
 </layout:page-container>

@@ -26,34 +26,35 @@
         <span class="navbar-toggler-icon"></span>
         </button>
 
-            <%-- TODO the href uptop ? TODO Ask here
-        <%-- TODO -> change accordingly
+        <%-- TODO the href uptop ? TODO Ask here
+    <%-- TODO -> change accordingly
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-    <c:if test="${activePage == 'listEmployees' or activePage == 'editEmployee'}">
-        <c:set var="employeesMenuActive">active</c:set>
-    </c:if>
-    <li class="nav-item ${employeesMenuActive} dropdown">
-    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-    aria-haspopup="true" aria-expanded="false">
-    Employee
-    </a>
-    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-    <a class="dropdown-item" href="/listEmployees">List Employee</a>
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
+<ul class="navbar-nav mr-auto">
+<c:if test="${activePage == 'listEmployees' or activePage == 'editEmployee'}">
+    <c:set var="employeesMenuActive">active</c:set>
+</c:if>
+<li class="nav-item ${employeesMenuActive} dropdown">
+<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+aria-haspopup="true" aria-expanded="false">
+Employee
+</a>
+<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+<a class="dropdown-item" href="/listEmployees">List Employee</a>
 
-    <sec:authorize access="hasAuthority('ROLE_ADMIN')">
-        <a class="dropdown-item" href="/editEmployee">Create Employee</a>
+<sec:authorize access="hasAuthority('ROLE_ADMIN')">
+    <a class="dropdown-item" href="/editEmployee">Create Employee</a>
 
-    </sec:authorize>
+</sec:authorize>
 
 
-    </div>
-    </li>
-    </ul>
-     --%>
-
-        Logged in as ${currentUser.username}
+</div>
+</li>
+</ul>
+ --%>
+        <div>
+        Logged in as <a href="/displayUser" class="btn-link">${currentUser.username}</a>
+        </div>
 
         <form:form method="post" action="/logout">
             <button class="btn btn-link" type="submit">Log Out</button>

@@ -1,7 +1,5 @@
 package at.fhj.ima.runnersworld.runnersworld.entity
 
-import java.time.LocalDate
-import java.time.LocalTime
 import java.io.Serializable
 import javax.persistence.*
 import javax.persistence.Entity
@@ -9,14 +7,16 @@ import javax.persistence.GeneratedValue
 import javax.persistence.GenerationType
 import javax.persistence.Id
 
+
 @Entity
 class Platform (
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         var id: Int? = null,
 
-        @OneToMany(fetch = FetchType.EAGER)
-        var speedRuns: Set<SpeedRun>? = null,
+        //TODO this is technically not needed
+        //@OneToMany(fetch = FetchType.EAGER)
+        //var speedruns: Set<Speedrun>? = null,
 
         var name: String? = null
 

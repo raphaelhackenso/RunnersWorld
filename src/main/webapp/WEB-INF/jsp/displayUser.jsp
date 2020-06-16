@@ -33,7 +33,7 @@
         </div>
 
 
-        <div class="col-md-4">
+        <div class="col-md-3">
             <sec:authorize access="hasAuthority('ROLE_USER')">
                 <p>
                     <a href="/addSpeedRun" class="btn btn-success">Speedrun hinzufügen</a>
@@ -41,13 +41,23 @@
             </sec:authorize>
         </div>
 
-        <div class="col-md-4">
-            <sec:authorize access="hasAuthority('ROLE_USER')">
+        <div class="col-md-2">
+            <sec:authorize access="hasAuthority('ROLE_ADMIN')">
                 <p>
-                    <a href="/editUser" class="btn btn-success">Account bearbeiten</a>
+                    <a href="/listGames" class="btn btn-success">Spiele bearbeiten</a>
                 </p>
             </sec:authorize>
         </div>
+
+        <div class="col-md-3">
+            <sec:authorize access="hasAuthority('ROLE_ADMIN')">
+                <p>
+                    <a href="/listPlatform" class="btn btn-success">Plattformen bearbeiten</a>
+                </p>
+            </sec:authorize>
+        </div>
+
+
 
     </div>
 

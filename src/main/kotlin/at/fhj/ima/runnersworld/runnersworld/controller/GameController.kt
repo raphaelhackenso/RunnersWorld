@@ -31,7 +31,7 @@ class GameController(val gameService: GameService) {
     }
     @RequestMapping("/changeGame", method = [RequestMethod.POST])
     @Secured("ROLE_ADMIN")
-    fun changeEmployee(@ModelAttribute("game") @Valid game: Game,
+    fun changeGame(@ModelAttribute("game") @Valid game: Game,
                        bindingResult: BindingResult, model: Model): String {
         if (bindingResult.hasErrors()) {
             return showEditGameView(model)

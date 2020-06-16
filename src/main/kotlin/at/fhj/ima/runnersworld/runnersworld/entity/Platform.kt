@@ -6,9 +6,12 @@ import javax.persistence.Entity
 import javax.persistence.GeneratedValue
 import javax.persistence.GenerationType
 import javax.persistence.Id
+import javax.validation.constraints.NotEmpty
+import javax.validation.constraints.NotNull
 
 
 @Entity
+@Table(uniqueConstraints = [UniqueConstraint(name = "name_UK", columnNames = ["name"])])
 class Platform (
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,7 +21,10 @@ class Platform (
         //@OneToMany(fetch = FetchType.EAGER)
         //var speedruns: Set<Speedrun>? = null,
 
+        @field:NotNull()
+        @field:NotEmpty()
         var name: String? = null
+
 
 
 

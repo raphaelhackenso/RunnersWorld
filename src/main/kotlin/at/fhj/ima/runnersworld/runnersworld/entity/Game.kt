@@ -7,6 +7,8 @@ import javax.persistence.Entity
 import javax.persistence.GeneratedValue
 import javax.persistence.GenerationType
 import javax.persistence.Id
+import javax.validation.constraints.NotEmpty
+import javax.validation.constraints.NotNull
 
 @Entity
 class Game (
@@ -17,11 +19,17 @@ class Game (
         //TODO this is technically not needed
         @OneToMany(fetch = FetchType.EAGER, mappedBy = "game")
         var speedruns: Set<Speedrun>? = null,
-
+        @field:NotNull()
+        @field:NotEmpty()
         var name: String? = null,
+        @field:NotNull()
+        @field:NotEmpty()
         var language: String? = null,
+        @field:NotNull()
         var version: Double? = null,
+        @field:NotNull()
         var releaseYear: LocalDate? = null
+
 
 
 

@@ -6,3 +6,9 @@ $(function () {
         input.parent().find('.invalid-feedback').remove();
     });
 });
+
+$('#datetimepicker1').datetimepicker({
+    defaultDate: new Date(),
+    format: 'DD/MM/YYYY hh:mm:ss A',
+    sideBySide: true
+});

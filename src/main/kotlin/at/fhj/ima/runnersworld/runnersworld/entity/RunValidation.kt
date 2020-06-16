@@ -1,5 +1,6 @@
 package at.fhj.ima.runnersworld.runnersworld.entity
 
+import org.hibernate.engine.internal.Cascade
 import java.io.Serializable
 import javax.persistence.*
 import javax.persistence.Entity
@@ -13,14 +14,17 @@ class RunValidation (
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         var id: Int? = null,
 
-        @OneToMany(fetch = FetchType.EAGER)
-        var speedruns: Set<Speedrun>? = null,
+        //@OneToOne(cascade = arrayOf(CascadeType.ALL))
+        //@OneToOne(mappedBy = "runValidation", cascade = arrayOf(CascadeType.ALL))
+        @OneToOne(cascade = arrayOf(CascadeType.ALL))
+        var speedrun: Speedrun? = null,
 
         @ManyToOne
         var validatedBy: User? = null,
 
-        @ManyToOne
-        var submittedFrom: User? = null,
+        //TODO this is technically stored in the speedruner -> runner
+        //@ManyToOne
+        //var submittedFrom: User? = null,
 
         var status: String? = null,
         var notes: String? = null

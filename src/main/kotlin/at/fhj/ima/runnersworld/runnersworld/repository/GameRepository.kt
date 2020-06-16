@@ -9,12 +9,11 @@ import org.springframework.data.repository.query.Param
 @Repository
 interface GameRepository : JpaRepository<Game, Int> {
 
-@Query ("FROM Game WHERE LOWER(name) LIKE CONCAT(LOWER(:search), '%')")
-fun findGameByName (@Param("search") search: String): List <Game>
+    @Query("FROM Game WHERE LOWER(name) LIKE CONCAT(LOWER(:search), '%')")
+    fun findGameByName(@Param("search") search: String): List<Game>
 
     @Query("FROM Game WHERE id = :id")
     fun findByGameId(@Param("id") id: Int): Game
-
 
 
     //TODO -> search in GameRepo

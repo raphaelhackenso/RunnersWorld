@@ -68,9 +68,9 @@
 
                     <! ---------------- In Game Time ---------------- -->
                     <div class="form-group">
-                        <label for="inputTime" class="col-md-2 control-label">In Game Time*</label>
+                        <label for="inputTime" class="col-md-4 control-label">In Game Time*</label>
                         <div class="col-md-10">
-                            <form:input id="inputTime" path="inGameTime" type="time" class="form-control"
+                            <form:input id="inputTime" path="inGameTime" type="time" step="1" class="form-control"
                                         required="required" value="${speedrun.inGameTime}"/>
                             <form:errors path="inGameTime" cssClass="invalid-feedback d-block"/>
                         </div>
@@ -90,7 +90,7 @@
 
                     <! ---------------- ValidationURL ---------------- -->
                     <div class="form-group">
-                        <label for="inputURL" class="col-md-2 control-label">Validation URL*</label>
+                        <label for="inputURL" class="col-md-4 control-label">Validation URL*</label>
                         <div class="col-md-10">
                             <form:input id="inputURL" path="validationURL" type="text" class="form-control"
                                         required="required" value="${speedrun.validationURL}"/>
@@ -103,8 +103,9 @@
                     <div class="form-group">
                         <label for="inputNotes" class="col-md-2 control-label">Notes</label>
                         <div class="col-md-10">
-                            <form:input id="inputNotes" path="notes" type="text" class="form-control"
-                                        value="${speedrun.notes}"/>
+
+                            <form:textarea path="notes" id="inputNotes" rows="5" />
+
                         </div>
                     </div>
 

@@ -35,8 +35,9 @@ class Speedrun (
     var date: LocalDate? = null,
     var state: String? = null,
 
-    @OneToOne
-    var runValidation: RunValidation? = null,
+        //TODO need this?
+    //@OneToOne()
+    //var runValidation: RunValidation? = null,
 
     @ManyToOne
     var typeOfRun: TypeOfRun? = null

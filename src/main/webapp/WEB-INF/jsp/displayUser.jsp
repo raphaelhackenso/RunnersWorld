@@ -32,34 +32,44 @@
             </form>
         </div>
 
-
-        <div class="col-md-3">
-            <sec:authorize access="hasAuthority('ROLE_USER')">
-                <p>
-                    <a href="/addSpeedRun" class="btn btn-success">Speedrun hinzufügen</a>
-                </p>
-            </sec:authorize>
-        </div>
-
-        <div class="col-md-2">
-            <sec:authorize access="hasAuthority('ROLE_ADMIN')">
-                <p>
-                    <a href="/listGames" class="btn btn-success">Spiele bearbeiten</a>
-                </p>
-            </sec:authorize>
-        </div>
-
-        <div class="col-md-3">
-            <sec:authorize access="hasAuthority('ROLE_ADMIN')">
-                <p>
-                    <a href="/listPlatform" class="btn btn-success">Plattformen bearbeiten</a>
-                </p>
-            </sec:authorize>
-        </div>
-
-
-
     </div>
+
+    <p></p>
+
+    <div class="row" >
+            <div class="col-md-3">
+                <sec:authorize access="hasAuthority('ROLE_USER')">
+                    <p>
+                        <a href="/addSpeedRun" class="btn btn-success">Speedrun hinzufügen</a>
+                    </p>
+                </sec:authorize>
+            </div>
+
+            <div class="col-md-3">
+                <sec:authorize access="hasAuthority('ROLE_ADMIN')">
+                    <p>
+                        <a href="/listRunValidations" class="btn btn-success">Speedruns validieren</a>
+                    </p>
+                </sec:authorize>
+            </div>
+
+            <div class="col-md-3">
+                <sec:authorize access="hasAuthority('ROLE_ADMIN')">
+                    <p>
+                        <a href="/listGames" class="btn btn-success">Spiele bearbeiten</a>
+                    </p>
+                </sec:authorize>
+            </div>
+
+            <div class="col-md-3">
+                <sec:authorize access="hasAuthority('ROLE_ADMIN')">
+                    <p>
+                        <a href="/listPlatform" class="btn btn-success">Plattformen bearbeiten</a>
+                    </p>
+                </sec:authorize>
+            </div>
+    </div>
+
 
     <div class="row">
         <div class="col-md-12 col-md-offset-1">
@@ -77,9 +87,6 @@
                     <th data-sortable="true">Version</th>
                     <th data-sortable="true">Referenz</th>
                     <th data-sortable="true">Status</th>
-                    <sec:authorize access="hasAuthority('ROLE_ADMIN')">
-                        <th data-sortable="true">Aktionen</th>
-                    </sec:authorize>
                 </tr>
                 </thead>
                 <tbody>
@@ -102,12 +109,6 @@
                         <td>
                             <sec:authorize access="hasAuthority('ROLE_USER')">
                                 ${speedRun.state}
-                            </sec:authorize>
-
-                        </td>
-                        <td>
-                            <sec:authorize access="hasAuthority('ROLE_ADMIN')">
-                                <a href="validateSpeedrun?id=${speedRun.id}" class="btn btn-xs btn-success">Validieren</a>
                             </sec:authorize>
                         </td>
                     </tr>

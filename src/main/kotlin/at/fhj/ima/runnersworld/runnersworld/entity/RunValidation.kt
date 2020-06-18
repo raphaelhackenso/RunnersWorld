@@ -8,8 +8,22 @@ import javax.persistence.GeneratedValue
 import javax.persistence.GenerationType
 import javax.persistence.Id
 
+/**
+ * The RunValidation class
+ *
+ * This class defines a runValidation for a given speedrun
+ *
+ *
+ * @property id the id of the runValidation.
+ * @property speedrun associated speedrun that is to be validated/denied.
+ * @property validatedBy the user (ROLE_ADMIN) that validated/denied this runValidation.
+ * @property status the status of the runValidation.
+ * @property notes the notes of the runValidation.
+ *
+ */
+
 @Entity
-class RunValidation (
+class RunValidation(
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         var id: Int? = null,
@@ -22,15 +36,8 @@ class RunValidation (
         @ManyToOne
         var validatedBy: User? = null,
 
-        //TODO this is technically stored in the speedruner -> runner
-        //@ManyToOne
-        //var submittedFrom: User? = null,
-
         var status: String? = null,
         var notes: String? = null
-
-
-
 
 
 ) : Comparable<RunValidation>, Serializable {

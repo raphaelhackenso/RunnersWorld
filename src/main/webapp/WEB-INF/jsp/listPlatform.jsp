@@ -61,7 +61,7 @@
                                     <td>${platform.name} </td>
                                     <td>
                                         <sec:authorize access="hasAuthority('ROLE_ADMIN')">
-                                            <a href="editPlatform?id=${platform.id}" class="btn btn-xs btn-success">Bearbeiten</a>
+                                            <a href="editPlatform?id=${platform.id}" class="btn btn-xs btn-primary">Bearbeiten</a>
                                         </sec:authorize>
                                     </td>
                                 </tr>

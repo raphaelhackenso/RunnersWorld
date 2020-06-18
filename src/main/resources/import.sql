@@ -17,9 +17,17 @@ INSERT INTO type_of_run(category) VALUES ('Any% Glitchless');
 INSERT INTO type_of_run(category) VALUES ('Blindfolded');
 
 
-INSERT INTO speedrun(date, in_game_time, notes, state, validationurl, game_id, platform_id, runner_id, type_of_run_id) VALUES ('2020.01.01', '20', '', 'pending', 'http://www.youtube.com', 1, 3, 2, 1);
-INSERT INTO speedrun(date, in_game_time, notes, state, validationurl, game_id, platform_id, runner_id, type_of_run_id) VALUES ('2020.01.01', '10', '', 'pending', 'http://www.youtube.com', 1, 3, 2, 1);
-INSERT INTO speedrun(date, in_game_time, notes, state, validationurl, game_id, platform_id, runner_id, type_of_run_id) VALUES ('2020.01.01', '30', '', 'pending', 'http://www.youtube.com', 1, 3, 2, 1);
+INSERT INTO speedrun(date, in_game_time, notes, state, validationurl, game_id, platform_id, runner_id, type_of_run_id) VALUES ('2020.01.01', '00:01:20', '', 'validated', 'http://www.youtube.com', 1, 3, 2, 1);
+INSERT INTO run_validation(notes, status, validated_by_id) VALUES ('', 'validated', 1);
+
+INSERT INTO speedrun(date, in_game_time, notes, state, validationurl, game_id, platform_id, runner_id, type_of_run_id) VALUES ('2020.01.01', '00:02:10', '', 'validated', 'http://www.youtube.com', 1, 3, 2, 1);
+INSERT INTO run_validation(notes, status, validated_by_id) VALUES ('', 'validated', 1);
+
+INSERT INTO speedrun(date, in_game_time, notes, state, validationurl, game_id, platform_id, runner_id, type_of_run_id) VALUES ('2020.01.01', '01:03:30', '', 'validated', 'http://www.youtube.com', 1, 3, 2, 1);
+INSERT INTO run_validation(notes, status, validated_by_id) VALUES ('', 'validated', 1);
+
+
+
 
 
 

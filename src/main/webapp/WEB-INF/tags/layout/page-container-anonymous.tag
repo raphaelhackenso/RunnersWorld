@@ -26,12 +26,29 @@
         <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div>
-        <a href="/registerUser" class="btn btn-link" role="button">Register User</a>
-        </div>
+        <c:if test="${not empty currentUser}">
+            <div>
+            Eingelogged als <a href="/displayUser" class="btn-link">${currentUser.username}</a>
+            </div>
+        </c:if>
+
+        <c:if test="${empty currentUser}">
+            <div>
+            <a href="/registerUser" class="btn btn-link" role="button">Register User</a>
+            </div>
+        </c:if>
+
 
         <div>
-        <a href="/listSpeedRuns" class="btn btn-link" role="button">Login</a>
+        <c:if test="${not empty currentUser}">
+            <form:form method="post" action="/logout">
+                <button class="btn btn-link" type="submit">Log Out</button>
+            </form:form>
+        </c:if>
+
+        <c:if test="${empty currentUser}">
+            <a href="/listSpeedRuns" class="btn btn-link" role="button">Login</a>
+        </c:if>
         </div>
 
         </div>

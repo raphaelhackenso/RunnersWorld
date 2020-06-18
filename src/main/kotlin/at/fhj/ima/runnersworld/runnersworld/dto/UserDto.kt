@@ -10,6 +10,21 @@ import javax.validation.constraints.NotEmpty
 import javax.validation.constraints.Size
 
 
+/**
+ * The UserDto class
+ *
+ * This class defines a userDto
+ *
+ *
+ * @property id the id of the userDto.
+ * @property username the username of the userDto.
+ * @property password the password of the userDto.
+ * @property passwordRepeat the repeated password of the userDto.
+ * @property speedruns associated speedruns for a userDto.
+ * @property runValidations associated runValidations for a userDto.
+ *
+ */
+
 class UserDto(
         var id: Int? = null,
         @NotNull
@@ -46,13 +61,9 @@ class UserDto(
     }
 
 
-    //@AssertTrue(message = "not match")
     fun isPasswordsMatch(): Boolean {
         return (password.equals(passwordRepeat))
     }
-
-
-
 
 
 }

@@ -14,4 +14,5 @@ interface UserRepository : JpaRepository<User, Int> {
 
     @Query("FROM User WHERE id = :id")
     fun findByUserId(@Param("id") id: Int): User
+
 }

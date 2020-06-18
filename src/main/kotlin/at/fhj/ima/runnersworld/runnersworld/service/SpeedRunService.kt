@@ -24,7 +24,7 @@ class SpeedRunService(val speedRunRepository: SpeedRunRepository) {
     }
 
     @Transactional
-    fun saveValidDeny(speedrun: Speedrun){
+    fun saveValidDeny(speedrun: Speedrun) {
         speedRunRepository.save(speedrun)
     }
 
@@ -60,6 +60,18 @@ class SpeedRunService(val speedRunRepository: SpeedRunRepository) {
 
     fun findBySpeedrunId(id: Int): Speedrun {
         return speedRunRepository.findBySpeedrunId(id)
+    }
+
+    fun findNewestValid(state: String, ammount: Int): List<Speedrun> {
+        return (speedRunRepository.findNewestValid(state).take(ammount))
+    }
+
+    fun rankSpeedRuns(game: Int, typeOfRun: Int, platform: Int): List<Speedrun>{
+        return speedRunRepository.rankSpeedRuns(game, typeOfRun, platform)
+    }
+
+    fun findAllValidSpeedrunsForUser(runner: Int): List<Speedrun>{
+        return speedRunRepository.findAllValidSpeedrunsForUser(runner)
     }
 
 

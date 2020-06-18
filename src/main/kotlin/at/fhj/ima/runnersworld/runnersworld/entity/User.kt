@@ -4,6 +4,22 @@ import java.io.Serializable
 import javax.persistence.*
 import javax.validation.constraints.Size
 
+/**
+ * The User class
+ *
+ * This class defines a user
+ *
+ *
+ * @property id the id of the user.
+ * @property username the username of the user.
+ * @property password the password of the user.
+ * @property role the role (Admin, User) of the user.
+ * @property speedruns associated speedruns for a user.
+ * @property runValidations associated runValidations for a user.
+ *
+ */
+
+
 
 enum class UserRole {
     ROLE_USER,

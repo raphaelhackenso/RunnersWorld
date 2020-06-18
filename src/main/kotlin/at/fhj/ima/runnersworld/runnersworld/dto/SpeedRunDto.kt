@@ -6,7 +6,25 @@ import javax.validation.constraints.NotNull
 import java.io.Serializable
 import java.time.LocalDate
 import java.time.LocalTime
+import javax.validation.constraints.NotEmpty
 
+/**
+ * The SpeedRunDto class
+ *
+ * This class defines the speedRunDto
+ *
+ *
+ * @property id the id of the speedRunDto.
+ * @property game associated game for a speedRunDto.
+ * @property platform associated platform for a speedRunDto.
+ * @property inGameTime the in game time for a speedRunDto.
+ * @property validationURL the reference (Link) for a speedRunDto.
+ * @property notes the notes for a speedRunDto.
+ * @property date the date for a speedRunDto.
+ * @property typeOfRun the type of run for a speedRunDto.
+ * @property runner associated runner (User) for a speedRunDto.
+ *
+ */
 
 class SpeedRunDto(
         var id: Int? = null,
@@ -17,6 +35,7 @@ class SpeedRunDto(
         @field:NotNull()
         var inGameTime: LocalTime? = null,
         @field:NotNull()
+        @field:NotEmpty()
         var validationURL: String? = null,
         var notes: String? = null,
         @field:NotNull()

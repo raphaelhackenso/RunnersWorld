@@ -10,37 +10,51 @@ import javax.persistence.GenerationType
 import javax.persistence.Id
 
 
+/**
+ * The Speedrun class
+ *
+ * This class defines the speedrun
+ *
+ *
+ * @property id the id of the speedrun.
+ * @property game associated game for a speedrun.
+ * @property platform associated platform for a speedrun.
+ * @property runner associated runner (User) for a speedrun.
+ * @property inGameTime the in game time for a speedrun.
+ * @property validationURL the reference (Link) for a speedrun.
+ * @property notes the notes for a speedrun.
+ * @property date the date for a speedrun.
+ * @property state the state for a speedrun.
+ * @property typeOfRun the type of run for a speedrun.
+ *
+ */
+
 @Entity
-class Speedrun (
+class Speedrun(
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var id: Int? = null,
+        @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        var id: Int? = null,
 
-    @ManyToOne
-    var game: Game? = null,
+        @ManyToOne
+        var game: Game? = null,
 
-    @ManyToOne
-    var platform: Platform? = null,
+        @ManyToOne
+        var platform: Platform? = null,
 
 
-    @ManyToOne
-    @JoinColumn(name = "runner_id", nullable = false)
-    var runner: User? = null,
+        @ManyToOne
+        @JoinColumn(name = "runner_id", nullable = false)
+        var runner: User? = null,
 
-    var inGameTime: LocalTime? = null,
-    //var gameVersion: Double? = null,
-    var validationURL: String? = null,
-    var notes: String? = null,
-    var date: LocalDate? = null,
-    var state: String? = null,
+        var inGameTime: LocalTime? = null,
+        var validationURL: String? = null,
+        var notes: String? = null,
+        var date: LocalDate? = null,
+        var state: String? = null,
 
-        //TODO need this?
-    //@OneToOne()
-    //var runValidation: RunValidation? = null,
-
-    @ManyToOne
-    var typeOfRun: TypeOfRun? = null
+        @ManyToOne
+        var typeOfRun: TypeOfRun? = null
 
 
 ) : Comparable<Speedrun>, Serializable {

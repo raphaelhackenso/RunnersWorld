@@ -4,6 +4,7 @@ import at.fhj.ima.runnersworld.runnersworld.controller.advice.CurrentUserControl
 import at.fhj.ima.runnersworld.runnersworld.dto.UserDto
 import at.fhj.ima.runnersworld.runnersworld.repository.SpeedRunRepository
 import at.fhj.ima.runnersworld.runnersworld.repository.UserRepository
+import at.fhj.ima.runnersworld.runnersworld.service.SpeedRunService
 import at.fhj.ima.runnersworld.runnersworld.service.UserService
 import org.springframework.dao.DataIntegrityViolationException
 import org.springframework.data.domain.Sort
@@ -18,7 +19,7 @@ import javax.servlet.http.HttpServletRequest
 import javax.validation.Valid
 
 @Controller
-class UserController(val userService: UserService) {
+class UserController(val userService: UserService, val speedRunService: SpeedRunService) {
 
 
     @RequestMapping("/registerUser", method = [RequestMethod.GET])
@@ -33,8 +34,6 @@ class UserController(val userService: UserService) {
     fun showRegisterUser(model: Model): String {
         return "registerUser"
     }
-
-    //TODO https://www.baeldung.com/registration-with-spring-mvc-and-spring-security
 
 
     @RequestMapping("/registerUserAccount", method = [RequestMethod.POST])
@@ -60,13 +59,11 @@ class UserController(val userService: UserService) {
         }
 
         model.set("message", "User ${user.username} has been registered")
-        //return "redirect:/registerUser"
         return registerUser(model)
-        //TODO add change/show User account jsp
-
     }
 
-    /* TODO include
+
+    /* TODO ADD error page!!
     @ExceptionHandler(Exception::class)
     fun handleError(req: HttpServletRequest, ex: Exception): ModelAndView {
         val modelAndView = ModelAndView()
@@ -83,6 +80,26 @@ class UserController(val userService: UserService) {
     @RequestMapping("/displayUser", method = [RequestMethod.GET])
     fun displayUser(model: Model): String {
         return "displayUser"
+    }
+
+    @RequestMapping("/adisplayUser", method = [RequestMethod.GET])
+    fun adisplayUser(model: Model, @RequestParam("runner") runner: String?): String {
+
+        if (runner.isNullOrEmpty()) {
+            model.set("errorMessage", "Kein Runner wurde eingegeben")
+        } else {
+
+            try {
+                val requestedRunner = userService.findByUsername(runner)
+                model.set("requestedRunner", requestedRunner)
+                model.set("requestedRunnerSpeedruns", speedRunService.findAllValidSpeedrunsForUser(requestedRunner.id
+                        ?: 0)) //TODO ? the id cannot be null
+            } catch (e: Exception) {
+                model.set("errorMessage", "${runner} konnte nicht gefunden werden")
+            }
+
+        }
+        return "adisplayUser"
     }
 
 }

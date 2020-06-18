@@ -13,111 +13,99 @@
 
 <layout:page-container title="displayUser" activePage="displayUser">
 
-    <div class="row">
-        <div class="col-md-4">
-            <form class="form-inline" method="get" action="listSpeedRuns">
-                <input class="form-control mr-sm-2" name="search" type="search" placeholder="Search"
-                       aria-label="Search">
-                <button class="btn btn-primary" type="submit">
-                    <svg class="bi bi-search" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
-                         xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd"
-                              d="M10.442 10.442a1 1 0 011.415 0l3.85 3.85a1 1 0 01-1.414 1.415l-3.85-3.85a1 1 0 010-1.415z"
-                              clip-rule="evenodd"/>
-                        <path fill-rule="evenodd"
-                              d="M6.5 12a5.5 5.5 0 100-11 5.5 5.5 0 000 11zM13 6.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z"
-                              clip-rule="evenodd"/>
-                    </svg>
-                </button>
-            </form>
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-4">
+                <input class="form-control mr-sm-2" type="search" placeholder="Suchen"
+                       aria-label="Search" id="adisplayUserSearch">
+            </div>
+
+            <div class="col-md-4">
+                <p>
+                    <a href="/addSpeedRun" class="btn btn-primary">Speedrun hinzufügen</a>
+                </p>
+            </div>
         </div>
 
-    </div>
+        <p></p>
 
-    <p></p>
+        <sec:authorize access="hasAuthority('ROLE_ADMIN')">
+                <div class="row border border-success">
+                    <legend>&nbsp; Admin Toolkit</legend>
+                    <div class="col-md-3">
+                        <p>
+                            <a href="/listRunValidations" class="btn btn-success">Speedruns validieren</a>
+                        </p>
+                    </div>
 
-    <div class="row" >
-            <div class="col-md-3">
-                <sec:authorize access="hasAuthority('ROLE_USER')">
-                    <p>
-                        <a href="/addSpeedRun" class="btn btn-success">Speedrun hinzufügen</a>
-                    </p>
-                </sec:authorize>
-            </div>
+                    <div class="col-md-3">
+                        <p>
+                            <a href="/listGames" class="btn btn-success">Spiele bearbeiten</a>
+                        </p>
+                    </div>
 
-            <div class="col-md-3">
-                <sec:authorize access="hasAuthority('ROLE_ADMIN')">
-                    <p>
-                        <a href="/listRunValidations" class="btn btn-success">Speedruns validieren</a>
-                    </p>
-                </sec:authorize>
-            </div>
+                    <div class="col-md-3">
+                        <p>
+                            <a href="/listPlatform" class="btn btn-success">Plattformen bearbeiten</a>
+                        </p>
+                    </div>
 
-            <div class="col-md-3">
-                <sec:authorize access="hasAuthority('ROLE_ADMIN')">
-                    <p>
-                        <a href="/listGames" class="btn btn-success">Spiele bearbeiten</a>
-                    </p>
-                </sec:authorize>
-            </div>
+                    <div class="col-md-3">
+                        <p>
+                            <a href="/listTypeOfRuns" class="btn btn-success">Typen bearbeiten</a>
+                        </p>
+                    </div>
+                </div>
+        </sec:authorize>
 
-            <div class="col-md-3">
-                <sec:authorize access="hasAuthority('ROLE_ADMIN')">
-                    <p>
-                        <a href="/listPlatform" class="btn btn-success">Plattformen bearbeiten</a>
-                    </p>
-                </sec:authorize>
-            </div>
-    </div>
+        <div class="row">
+            <div class="col-md-12 col-md-offset-1">
+                <legend>Speedruns von ${currentUser.username}</legend>
 
-
-    <div class="row">
-        <div class="col-md-12 col-md-offset-1">
-            <legend>Speedruns von ${currentUser.username}</legend>
-
-            <table data-toggle="table" class="table table-striped">
-                <thead>
-                <tr>
-                    <th data-sortable="true">ID</th>
-                    <th data-sortable="true">Spiel</th>
-                    <th data-sortable="true">Zeit</th>
-                    <th data-sortable="true">Datum</th>
-                    <th data-sortable="true">Typ</th>
-                    <th data-sortable="true">Platform</th>
-                    <th data-sortable="true">Version</th>
-                    <th data-sortable="true">Referenz</th>
-                    <th data-sortable="true">Status</th>
-                </tr>
-                </thead>
-                <tbody>
-                <!--  list all speedRuns ----------------------------------------------------------- -->
-                <c:forEach items="${currentUser.speedruns}" var="speedRun" varStatus="Rank">
-
+                <table data-toggle="table" class="table table-striped">
+                    <thead>
                     <tr>
-                        <td>${speedRun.id}</td>
-                        <td>${speedRun.game.name}</td>
-                        <td>${speedRun.inGameTime}</td>
-                        <td>
-                            <fmt:parseDate value="${speedRun.date}" pattern="yyyy-MM-dd" var="parsedDate"
-                                           type="date"/>
-                            <fmt:formatDate value="${parsedDate}" type="date" pattern="dd.MM.yyyy"/>
-                        </td>
-                        <td>${speedRun.typeOfRun.category}</td>
-                        <td>${speedRun.platform.name}</td>
-                        <td>${speedRun.game.version}</td>
-                        <td><a href=${speedRun.validationURL}>URL</a></td>
-                        <td>
-                            <sec:authorize access="hasAuthority('ROLE_USER')">
-                                ${speedRun.state}
-                            </sec:authorize>
-                        </td>
+                        <th data-sortable="true">ID</th>
+                        <th data-sortable="true">Spiel</th>
+                        <th data-sortable="true">Zeit</th>
+                        <th data-sortable="true">Datum</th>
+                        <th data-sortable="true">Typ</th>
+                        <th data-sortable="true">Platform</th>
+                        <th data-sortable="true">Version</th>
+                        <th data-sortable="true">Referenz</th>
+                        <th data-sortable="true">Status</th>
                     </tr>
-                </c:forEach>
-                <!--  list all speedRuns ----------------------------------------------------------- -->
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody id="adisplayUserSpeedruns">
+                    <!--  list all speedRuns ----------------------------------------------------------- -->
+                    <c:forEach items="${currentUser.speedruns}" var="speedRun" varStatus="Rank">
+
+                        <tr>
+                            <td>${speedRun.id}</td>
+                            <td>${speedRun.game.name}</td>
+                            <td>${speedRun.inGameTime}</td>
+                            <td>
+                                <fmt:parseDate value="${speedRun.date}" pattern="yyyy-MM-dd" var="parsedDate"
+                                               type="date"/>
+                                <fmt:formatDate value="${parsedDate}" type="date" pattern="dd.MM.yyyy"/>
+                            </td>
+                            <td>${speedRun.typeOfRun.category}</td>
+                            <td>${speedRun.platform.name}</td>
+                            <td>${speedRun.game.version}</td>
+                            <td><a href=${speedRun.validationURL}>URL</a></td>
+                            <td>
+                                <sec:authorize access="hasAuthority('ROLE_USER')">
+                                    ${speedRun.state}
+                                </sec:authorize>
+                            </td>
+                        </tr>
+                    </c:forEach>
+                    <!--  list all speedRuns ----------------------------------------------------------- -->
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
-
 
 </layout:page-container>

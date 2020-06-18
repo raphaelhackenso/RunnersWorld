@@ -64,7 +64,8 @@
                                            type="date"/>
                             <fmt:formatDate value="${parsedDate}" type="date" pattern="dd.MM.yyyy"/>
                         </td>
-                        <td>${runValidation.speedrun.runner.username}</td>
+                        <td><a href="adisplayUser?runner=${runValidation.speedrun.runner.username}">${runValidation.speedrun.runner.username}</a></td>
+
                         <td><a href=${runValidation.speedrun.validationURL}>URL</a></td>
                         <td>${runValidation.speedrun.notes}</td>
 
@@ -134,7 +135,7 @@
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                                Sind Sie sicher, dass sie den Speedrun Nr: ${runValidation.speedrun.id}
+                                                Sind Sie sicher, dass der Speedrun Nr: ${runValidation.speedrun.id}
                                                 von ${runValidation.speedrun.runner.username}
                                                 vom ${runValidation.speedrun.date} nicht korrekt ist und somit anulliert
                                                 werden soll?

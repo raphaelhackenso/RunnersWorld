@@ -53,13 +53,12 @@ Employee
 </ul>
  --%>
         <div>
-        Logged in as <a href="/displayUser" class="btn-link">${currentUser.username}</a>
+        Eingelogged als <a href="/displayUser" class="btn-link">${currentUser.username}</a>
         </div>
 
         <form:form method="post" action="/logout">
             <button class="btn btn-link" type="submit">Log Out</button>
         </form:form>
-
 
         </div>
         </div>
@@ -97,4 +96,4 @@ Employee
         <script type="text/javascript" src="<c:url value="/js/custom.js"/>"></script>
 
         </body>
-        </html><
+        </html>

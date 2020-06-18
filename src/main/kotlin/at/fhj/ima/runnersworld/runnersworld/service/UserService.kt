@@ -50,4 +50,8 @@ class UserService(val userRepository: UserRepository){
     fun findByUserId(id: Int): User{
         return userRepository.findByUserId(id)
     }
+
+    fun findByUsername(username: String): User{
+        return  userRepository.findByUsername(username)
+    }
 }

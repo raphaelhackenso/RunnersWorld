@@ -24,8 +24,10 @@ class WebSecurityConfig : WebSecurityConfigurerAdapter() {
 
                 .antMatchers("/").permitAll()
                 .antMatchers("/aSpeedRuns").permitAll()
+                .antMatchers("/rankSpeedrun").permitAll()
                 .antMatchers("/registerUser").permitAll()
                 .antMatchers("/registerUserAccount").permitAll()
+                .antMatchers("/adisplayUser").permitAll()
 
                 .antMatchers("/css/custom.css").permitAll()
                 .antMatchers("/js/custom.js").permitAll()

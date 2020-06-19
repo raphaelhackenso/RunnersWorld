@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.RequestMethod
 class HomePageController {
 
 
-
-    //TODO Ask here
     @RequestMapping("", method = [RequestMethod.GET])
     fun homePage(): String {
         val auth = SecurityContextHolder.getContext().authentication

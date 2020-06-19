@@ -26,34 +26,15 @@
         <span class="navbar-toggler-icon"></span>
         </button>
 
-        <%-- TODO the href uptop ? TODO Ask here
-    <%-- TODO -> change accordingly
 
-<div class="collapse navbar-collapse" id="navbarSupportedContent">
-<ul class="navbar-nav mr-auto">
-<c:if test="${activePage == 'listEmployees' or activePage == 'editEmployee'}">
-    <c:set var="employeesMenuActive">active</c:set>
-</c:if>
-<li class="nav-item ${employeesMenuActive} dropdown">
-<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-aria-haspopup="true" aria-expanded="false">
-Employee
-</a>
-<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-<a class="dropdown-item" href="/listEmployees">List Employee</a>
-
-<sec:authorize access="hasAuthority('ROLE_ADMIN')">
-    <a class="dropdown-item" href="/editEmployee">Create Employee</a>
-
-</sec:authorize>
-
-
-</div>
-</li>
-</ul>
- --%>
         <div>
-        Eingelogged als <a href="/displayUser" class="btn-link">${currentUser.username}</a>
+        Eingelogged als <a href="/displayUser" class="btn-link">${currentUser.username} <svg class="bi bi-person-circle"
+        width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path d="M13.468 12.37C12.758 11.226 11.195 10 8 10s-4.757 1.225-5.468 2.37A6.987 6.987 0 0 0 8 15a6.987 6.987 0
+        0 0 5.468-2.63z"/>
+        <path fill-rule="evenodd" d="M8 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+        <path fill-rule="evenodd" d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z"/>
+        </svg></a>
         </div>
 
         <form:form method="post" action="/logout">

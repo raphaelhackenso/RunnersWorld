@@ -1,9 +1,6 @@
 package at.fhj.ima.runnersworld.runnersworld.service
 
 
-
-
-
 import at.fhj.ima.runnersworld.runnersworld.dto.UserDto
 import at.fhj.ima.runnersworld.runnersworld.entity.User
 import at.fhj.ima.runnersworld.runnersworld.entity.UserRole
@@ -13,31 +10,28 @@ import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 
 
-
 @Service
-class UserService(val userRepository: UserRepository){
+class UserService(val userRepository: UserRepository) {
 
 
-    fun createNewUser(): UserDto{
+    fun createNewUser(): UserDto {
         val newUser = User()
         return convertEntityToDto(newUser)
     }
 
 
     @Transactional
-    fun save(dto: UserDto){
+    fun save(dto: UserDto) {
         userRepository.save(convertDtoToEntity(dto))
     }
 
 
-    private fun convertEntityToDto(entity: User): UserDto{
+    private fun convertEntityToDto(entity: User): UserDto {
         return UserDto(entity.id, entity.username, entity.password, entity.password, entity.speedruns, entity.runValidations)
-        //return UserDto(entity.id, entity.username, entity.password, entity.password, entity.runValidations)
     }
 
 
     private fun convertDtoToEntity(dto: UserDto): User {
-        // TODO logic that prevents specific roles/users from editing certain attributes could be added here
         val user = User()
         user.id = dto.id
         user.username = dto.username
@@ -47,11 +41,11 @@ class UserService(val userRepository: UserRepository){
         return user
     }
 
-    fun findByUserId(id: Int): User{
+    fun findByUserId(id: Int): User {
         return userRepository.findByUserId(id)
     }
 
-    fun findByUsername(username: String): User{
-        return  userRepository.findByUsername(username)
+    fun findByUsername(username: String): User {
+        return userRepository.findByUsername(username)
     }
 }

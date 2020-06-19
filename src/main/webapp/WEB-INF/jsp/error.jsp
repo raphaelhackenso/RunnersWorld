@@ -7,7 +7,7 @@
 <%@taglib prefix="bootstrap" tagdir="/WEB-INF/tags/bootstrap" %>
 <%@taglib prefix="layout" tagdir="/WEB-INF/tags/layout" %>
 
-<layout:page-container title="Error" activePage="error">
+<layout:page-container-anonymous title="Error" activePage="error">
 
     <h1>Error</h1>
 
@@ -15,4 +15,4 @@
 
     <p>Dieses Problem ist aufgetreten: ${exception}</p>
 
-</layout:page-container>
+</layout:page-container-anonymous>

@@ -20,8 +20,6 @@ import javax.validation.Valid
 @Controller
 class PlatformController(val platformService: PlatformService) {
 
-//TODO -> update to be used with Services
-
     @RequestMapping("/listPlatform", method = [RequestMethod.GET])
     fun listPlatform(model: Model, @RequestParam(required = false) search: String?): String {
         if (search != null) {
@@ -31,6 +29,7 @@ class PlatformController(val platformService: PlatformService) {
         }
         return "listPlatform"
     }
+
     @RequestMapping("/changePlatform", method = [RequestMethod.POST])
     @Secured("ROLE_ADMIN")
     fun changePlatform(@ModelAttribute("platform") @Valid platform: Platform,
@@ -43,15 +42,15 @@ class PlatformController(val platformService: PlatformService) {
             platformService.save(platform)
         } catch (dive: DataIntegrityViolationException) {
             if (dive.message.orEmpty().contains("name_UK")) {
-                bindingResult.rejectValue("name", "platform.alreadyInUse", "Platform already Exists!");
+                bindingResult.rejectValue("name", "platform.alreadyInUse", "Diese Platform gibt es bereits!");
                 return showEditPlatformView(model)
 
-            } else { throw dive;
+            } else {
+                throw dive;
             }
         }
         return "redirect:/listPlatform"
     }
-
 
 
     @RequestMapping("/editPlatform", method = [RequestMethod.GET])
@@ -68,8 +67,6 @@ class PlatformController(val platformService: PlatformService) {
     fun showEditPlatformView(model: Model): String {
         return "editPlatform"
     }
-
-
 
 
 }

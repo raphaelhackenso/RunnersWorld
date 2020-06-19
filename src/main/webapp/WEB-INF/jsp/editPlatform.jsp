@@ -12,35 +12,37 @@
 
 <layout:page-container title="editPlatform" activePage="editPlatform">
 
-    <h1>Platform Bearbeiten / Anlegen</h1>
-
-    <div class="col-md-8 col-md-offset-2">
-            <%--@elvariable id="platform" type="at.fhj.ima.runnnersworld.runnersworkd.entity.Platform"--%>
-        <form:form modelAttribute="platform" class="needs-valiation form-horizontal" method="Post" action="changePlatform" novalidate="novalidate">
-            <input type="hidden" name="id" value="<c:out value="${platform.id}"/>">
-            <fieldset>
-                <! ---------------- name ---------------- -->
-                <div class="form-group">
-                    <label for="inputName" class="col-md-2 control-label">Name</label>
-                    <div class="col-md-10">
-                        <form:input id="inputName" path="name" type="text" class="form-control" required="required"/>
-                        <form:errors path="name" cssClass="invalid-feedback d-block"/>
+    <legend>Spiel Bearbeiten / Anlegen</legend>
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+                <%--@elvariable id="platform" type="at.fhj.ima.runnnersworld.runnersworkd.entity.Platform"--%>
+            <form:form modelAttribute="platform" class="needs-validation form-horizontal" method="Post"
+                       action="changePlatform" novalidate="novalidate">
+                <input type="hidden" name="id" value="<c:out value="${platform.id}"/>">
+                <fieldset>
+                    <! ---------------- name ---------------- -->
+                    <div class="form-group">
+                        <label for="inputName" class="col-md-2 control-label">Name</label>
+                        <div class="col-md-10">
+                            <form:input id="inputName" path="name" type="text" class="form-control"
+                                        required="required"/>
+                            <form:errors path="name" cssClass="invalid-feedback d-block"/>
+                        </div>
                     </div>
-                </div>
 
-                <! ---------------- buttons ---------------- -->
-                <div class="form-group">
-                    <div class="col-md-10 col-md-offset-2">
-                        <button type="submit" class="btn btn-primary">Speichern</button>
-                        <a href="listPlatform" class="btn btn-default">Abbruch</a>
+                    <! ---------------- buttons ---------------- -->
+                    <div class="form-group">
+                        <div class="col-md-10 col-md-offset-2">
+                            <button type="submit" class="btn btn-primary">Speichern</button>
+                            <a href="listPlatform" class="btn btn-default">Abbruch</a>
+                        </div>
                     </div>
-                </div>
 
-            </fieldset>
+                </fieldset>
 
-        </form:form>
+            </form:form>
 
+        </div>
     </div>
-
 
 </layout:page-container>

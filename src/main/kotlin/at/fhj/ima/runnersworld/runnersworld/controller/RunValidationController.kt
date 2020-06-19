@@ -27,7 +27,6 @@ class RunValidationController(val runValidationService: RunValidationService,
     @Secured("ROLE_ADMIN")
     fun listRunValidations(model: Model, @RequestParam(required = false) search: String?): String {
         if (search != null) {
-            //TODO search
             model.set("runValidations", runValidationService.findByRunValidationId(search))
         } else {
             model.set("runValidations", runValidationService.findAllPending())

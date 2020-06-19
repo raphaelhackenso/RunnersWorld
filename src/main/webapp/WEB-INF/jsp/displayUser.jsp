@@ -31,32 +31,32 @@
         <p></p>
 
         <sec:authorize access="hasAuthority('ROLE_ADMIN')">
-                <div class="row border border-success">
-                    <legend>&nbsp; Admin Toolkit</legend>
-                    <div class="col-md-3">
-                        <p>
-                            <a href="/listRunValidations" class="btn btn-success">Speedruns validieren</a>
-                        </p>
-                    </div>
-
-                    <div class="col-md-3">
-                        <p>
-                            <a href="/listGames" class="btn btn-success">Spiele bearbeiten</a>
-                        </p>
-                    </div>
-
-                    <div class="col-md-3">
-                        <p>
-                            <a href="/listPlatform" class="btn btn-success">Plattformen bearbeiten</a>
-                        </p>
-                    </div>
-
-                    <div class="col-md-3">
-                        <p>
-                            <a href="/listTypeOfRuns" class="btn btn-success">Typen bearbeiten</a>
-                        </p>
-                    </div>
+            <div class="row border border-success">
+                <legend>&nbsp; Admin Toolkit</legend>
+                <div class="col-md-3">
+                    <p>
+                        <a href="/listRunValidations" class="btn btn-success">Speedruns validieren</a>
+                    </p>
                 </div>
+
+                <div class="col-md-3">
+                    <p>
+                        <a href="/listGames" class="btn btn-success">Spiele bearbeiten</a>
+                    </p>
+                </div>
+
+                <div class="col-md-3">
+                    <p>
+                        <a href="/listPlatform" class="btn btn-success">Plattformen bearbeiten</a>
+                    </p>
+                </div>
+
+                <div class="col-md-3">
+                    <p>
+                        <a href="/listTypeOfRuns" class="btn btn-success">Typen bearbeiten</a>
+                    </p>
+                </div>
+            </div>
         </sec:authorize>
 
         <div class="row">
@@ -81,7 +81,11 @@
                     <!--  list all speedRuns ----------------------------------------------------------- -->
                     <c:forEach items="${currentUser.speedruns}" var="speedRun" varStatus="Rank">
 
-                        <tr>
+                        <tr style="
+                        <c:if test="${speedRun.state == 'pending'}"> background-color: #fff8c7</c:if>
+                        <c:if test="${speedRun.state == 'validated'}"> background-color: #bdffbf</c:if>
+                        <c:if test="${speedRun.state == 'denied'}"> background-color: #ffb2a8</c:if>
+                                ">
                             <td>${speedRun.id}</td>
                             <td>${speedRun.game.name}</td>
                             <td>${speedRun.inGameTime}</td>

@@ -18,8 +18,6 @@ import javax.validation.Valid
 @Controller
 class GameController(val gameService: GameService) {
 
-//TODO -> update to be used with Services
-
     @RequestMapping("/listGames", method = [RequestMethod.GET])
     fun listGames(model: Model, @RequestParam(required = false) search: String?): String {
         if (search != null) {
@@ -29,10 +27,11 @@ class GameController(val gameService: GameService) {
         }
         return "listGames"
     }
+
     @RequestMapping("/changeGame", method = [RequestMethod.POST])
     @Secured("ROLE_ADMIN")
     fun changeGame(@ModelAttribute("game") @Valid game: Game,
-                       bindingResult: BindingResult, model: Model): String {
+                   bindingResult: BindingResult, model: Model): String {
         if (bindingResult.hasErrors()) {
             return showEditGameView(model)
         }
@@ -40,11 +39,10 @@ class GameController(val gameService: GameService) {
         try {
             gameService.save(game)
         } catch (dive: DataIntegrityViolationException) {
-                throw dive;
+            throw dive;
         }
         return "redirect:/listGames"
     }
-
 
 
     @RequestMapping("/editGame", method = [RequestMethod.GET])
@@ -61,8 +59,6 @@ class GameController(val gameService: GameService) {
     fun showEditGameView(model: Model): String {
         return "editGame"
     }
-
-
 
 
 }

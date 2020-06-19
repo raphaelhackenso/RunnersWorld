@@ -65,17 +65,38 @@
                 <input id="inputGameId" type="hidden" name="game" value=""/>
                 <input id="inputTypeOfRunId" type="hidden" name="typeOfRun" value="">
                 <input id="inputPlatformId" type="hidden" name="platform" value="">
+
+                <input id="textGameName" type="hidden"
+                       value=" <c:if test="${not empty rankSpeedRuns}"> ${rankSpeedRuns[0].game.name}</c:if> ">
+                <input id="textTypeOfRunName" type="hidden"
+                       value=" <c:if test="${not empty rankSpeedRuns}"> ${rankSpeedRuns[0].typeOfRun.category}</c:if> ">
+                <input id="textPlatformName" type="hidden"
+                       value=" <c:if test="${not empty rankSpeedRuns}"> ${rankSpeedRuns[0].platform.name}</c:if> ">
+
                 <button type="submit" class="btn btn-xs btn-success">suchen
                 </button>
-            </form>
+                <c:if test="${not empty rankSpeedRuns}">
+                    <button id="exportRankSpeedRuns" class="btn btn-link">
+                        <svg class="bi bi-download" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                  d="M.5 8a.5.5 0 0 1 .5.5V12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8.5a.5.5 0 0 1 1 0V12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V8.5A.5.5 0 0 1 .5 8z"/>
+                            <path fill-rule="evenodd"
+                                  d="M5 7.5a.5.5 0 0 1 .707 0L8 9.793 10.293 7.5a.5.5 0 1 1 .707.707l-2.646 2.647a.5.5 0 0 1-.708 0L5 8.207A.5.5 0 0 1 5 7.5z"/>
+                            <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0v-8A.5.5 0 0 1 8 1z"/>
+                        </svg>
+                    </button>
 
+                </c:if>
+
+            </form>
         </div>
     </div>
 
 
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
-            <table data-toggle="table" class="table table-striped">
+            <table data-toggle="table" id="rankSpeedRunsTable" class="table table-striped">
                 <thead>
                 <tr>
 
@@ -134,11 +155,23 @@
         </div>
     </div>
 
+    <p></p>
 
-    <div class="row">
+    <div class="row border rounded">
         <div class="col-md-10 col-md-offset-1">
-            <legend>Neueste Speedruns</legend>
-            <table data-toggle="table" class="table table-striped">
+            <legend>Neueste Speedruns
+                <button id="exportNewestRunsTable" class="btn btn-link">
+                    <svg class="bi bi-download" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                              d="M.5 8a.5.5 0 0 1 .5.5V12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8.5a.5.5 0 0 1 1 0V12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V8.5A.5.5 0 0 1 .5 8z"/>
+                        <path fill-rule="evenodd"
+                              d="M5 7.5a.5.5 0 0 1 .707 0L8 9.793 10.293 7.5a.5.5 0 1 1 .707.707l-2.646 2.647a.5.5 0 0 1-.708 0L5 8.207A.5.5 0 0 1 5 7.5z"/>
+                        <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0v-8A.5.5 0 0 1 8 1z"/>
+                    </svg>
+                </button>
+            </legend>
+            <table data-toggle="table" id="newestRunsTable" class="table table-striped">
                 <thead>
                 <tr>
 

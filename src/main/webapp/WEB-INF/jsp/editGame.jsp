@@ -12,69 +12,71 @@
 
 <layout:page-container title="editGames" activePage="editGames">
 
-    <h1>Spiel Bearbeiten / Anlegen</h1>
-
-    <div class="col-md-8 col-md-offset-2">
-            <%--@elvariable id="game" type="at.fhj.ima.runnnersworld.runnersworkd.entity.Game"--%>
-        <form:form modelAttribute="game" class="needs-valiation form-horizontal" method="Post" action="changeGame"
-                   novalidate="novalidate">
-            <input type="hidden" name="id" value="<c:out value="${game.id}"/>">
-            <fieldset>
-                <! ---------------- language ---------------- -->
-                <div class="form-group">
-                    <label for="inputLanguage" class="col-md-2 control-label">Language</label>
-                    <div class="col-md-10">
-                        <form:select id="inputLanguage" path="language" cssClass="form-control">
-                            <form:option value="">&nbsp;</form:option>
-                            <form:option value="Englisch">Englisch</form:option>
-                            <form:option value="Japanisch">Japanisch</form:option>
-                            <form:option value="Deutsch">Deutsch</form:option>
-                            <form:option value="Französisch">Französisch</form:option>
-                            <form:option value="Chinesisch">Chinesisch</form:option>
-                        </form:select>
-                        <form:errors path="language" cssClass="invalid-feedback d-block"/>
+    <legend>Spiel Bearbeiten / Anlegen</legend>
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+                <%--@elvariable id="game" type="at.fhj.ima.runnnersworld.runnersworkd.entity.Game"--%>
+            <form:form modelAttribute="game" class="needs-validation form-horizontal" method="Post" action="changeGame"
+                       novalidate="novalidate">
+                <input type="hidden" name="id" value="<c:out value="${game.id}"/>">
+                <fieldset>
+                    <! ---------------- language ---------------- -->
+                    <div class="form-group">
+                        <label for="inputLanguage" class="col-md-2 control-label">Language</label>
+                        <div class="col-md-10">
+                            <form:select id="inputLanguage" path="language" cssClass="form-control">
+                                <form:option value="">&nbsp;</form:option>
+                                <form:option value="Englisch">Englisch</form:option>
+                                <form:option value="Japanisch">Japanisch</form:option>
+                                <form:option value="Deutsch">Deutsch</form:option>
+                                <form:option value="Französisch">Französisch</form:option>
+                                <form:option value="Chinesisch">Chinesisch</form:option>
+                            </form:select>
+                            <form:errors path="language" cssClass="invalid-feedback d-block"/>
+                        </div>
                     </div>
-                </div>
 
-                <! ---------------- name ---------------- -->
-                <div class="form-group">
-                    <label for="inputName" class="col-md-2 control-label">Name</label>
-                    <div class="col-md-10">
-                        <form:input id="inputName" path="name" type="text" class="form-control" required="required"/>
-                        <form:errors path="name" cssClass="invalid-feedback d-block"/>
+                    <! ---------------- name ---------------- -->
+                    <div class="form-group">
+                        <label for="inputName" class="col-md-2 control-label">Name</label>
+                        <div class="col-md-10">
+                            <form:input id="inputName" path="name" type="text" class="form-control"
+                                        required="required"/>
+                            <form:errors path="name" cssClass="invalid-feedback d-block"/>
+                        </div>
                     </div>
-                </div>
 
-                <! ---------------- releaseYear ---------------- -->
-                <div class="form-group">
-                    <label for="inputRelease" class="col-md-2 control-label">Date</label>
-                    <div class="col-md-10">
-                        <form:input id="inputRelease" path="releaseYear" type="date" class="form-control"
-                                    required="required"/>
-                        <form:errors path="releaseYear" cssClass="invalid-feedback d-block"/>
+                    <! ---------------- releaseYear ---------------- -->
+                    <div class="form-group">
+                        <label for="inputRelease" class="col-md-2 control-label">Date</label>
+                        <div class="col-md-10">
+                            <form:input id="inputRelease" path="releaseYear" type="date" class="form-control"
+                                        required="required" value="${game.releaseYear}"/>
+                            <form:errors path="releaseYear" cssClass="invalid-feedback d-block"/>
+                        </div>
                     </div>
-                </div>
-                <! ---------------- version ---------------- -->
-                <div class="form-group">
-                    <label for="inputVersion" class="col-md-2 control-label">Version</label>
-                    <div class="col-md-10">
-                        <form:input id="inputVersion" path="version" type="number" class="form-control"
-                                    required="required"/>
-                        <form:errors path="version" cssClass="invalid-feedback d-block"/>
+                    <! ---------------- version ---------------- -->
+                    <div class="form-group">
+                        <label for="inputVersion" class="col-md-2 control-label">Version</label>
+                        <div class="col-md-10">
+                            <form:input id="inputVersion" path="version" type="number" class="form-control"
+                                        required="required"/>
+                            <form:errors path="version" cssClass="invalid-feedback d-block"/>
+                        </div>
                     </div>
-                </div>
-                <! ---------------- buttons ---------------- -->
-                <div class="form-group">
-                    <div class="col-md-10 col-md-offset-2">
-                        <button type="submit" class="btn btn-primary">Speichern</button>
-                        <a href="listGames" class="btn btn-default">Abbruch</a>
+                    <! ---------------- buttons ---------------- -->
+                    <div class="form-group">
+                        <div class="col-md-10 col-md-offset-2">
+                            <button type="submit" class="btn btn-primary">Speichern</button>
+                            <a href="listGames" class="btn btn-default">Abbruch</a>
+                        </div>
                     </div>
-                </div>
 
-            </fieldset>
+                </fieldset>
 
-        </form:form>
+            </form:form>
 
+        </div>
     </div>
 
 

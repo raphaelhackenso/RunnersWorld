@@ -48,8 +48,6 @@ class SpeedRunService(val speedRunRepository: SpeedRunRepository) {
 
         speedRun.state = "pending"
 
-        //TODO runValidation
-
         return speedRun
     }
 
@@ -66,11 +64,11 @@ class SpeedRunService(val speedRunRepository: SpeedRunRepository) {
         return (speedRunRepository.findNewestValid(state).take(ammount))
     }
 
-    fun rankSpeedRuns(game: Int, typeOfRun: Int, platform: Int): List<Speedrun>{
+    fun rankSpeedRuns(game: Int, typeOfRun: Int, platform: Int): List<Speedrun> {
         return speedRunRepository.rankSpeedRuns(game, typeOfRun, platform)
     }
 
-    fun findAllValidSpeedrunsForUser(runner: Int): List<Speedrun>{
+    fun findAllValidSpeedrunsForUser(runner: Int): List<Speedrun> {
         return speedRunRepository.findAllValidSpeedrunsForUser(runner)
     }
 

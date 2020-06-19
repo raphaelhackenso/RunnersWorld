@@ -32,6 +32,7 @@
         </div>
     </div>
 
+    <p></p>
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <legend>Alle ausstehenden Validierungen</legend>

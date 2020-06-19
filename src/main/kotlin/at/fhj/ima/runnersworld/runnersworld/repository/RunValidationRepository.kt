@@ -10,13 +10,9 @@ import org.springframework.stereotype.Repository
 @Repository
 interface RunValidationRepository : JpaRepository<RunValidation, Int> {
 
-    //TODO -> search
-
     @Query("FROM RunValidation WHERE LOWER(id) LIKE CONCAT(LOWER(:search),'%')")
     fun findByRunValidationId(@Param("search") search: String): List<RunValidation>
 
-
-    //TODO this should be safe ?
     @Query("FROM RunValidation WHERE LOWER(status) LIKE 'pending'")
     fun findAllPending(): List<RunValidation>
 

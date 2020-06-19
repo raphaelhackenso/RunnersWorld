@@ -24,8 +24,6 @@ class UserController(val userService: UserService, val speedRunService: SpeedRun
 
     @RequestMapping("/registerUser", method = [RequestMethod.GET])
     fun registerUser(model: Model): String {
-        //var newUserDto = UserDto()
-        //model.set("user", newUserDto)
 
         model.set("user", userService.createNewUser())
         return showRegisterUser(model)
@@ -63,20 +61,6 @@ class UserController(val userService: UserService, val speedRunService: SpeedRun
     }
 
 
-    /* TODO ADD error page!!
-    @ExceptionHandler(Exception::class)
-    fun handleError(req: HttpServletRequest, ex: Exception): ModelAndView {
-        val modelAndView = ModelAndView()
-        modelAndView.addObject("exception", ex)
-        modelAndView.addObject("url", req.requestURI)
-        modelAndView.viewName = "error"
-        return modelAndView
-    }
-
-
-     */
-
-
     @RequestMapping("/displayUser", method = [RequestMethod.GET])
     fun displayUser(model: Model): String {
         return "displayUser"
@@ -93,13 +77,23 @@ class UserController(val userService: UserService, val speedRunService: SpeedRun
                 val requestedRunner = userService.findByUsername(runner)
                 model.set("requestedRunner", requestedRunner)
                 model.set("requestedRunnerSpeedruns", speedRunService.findAllValidSpeedrunsForUser(requestedRunner.id
-                        ?: 0)) //TODO ? the id cannot be null
+                        ?: 0)) // The id cannot be null ?!
             } catch (e: Exception) {
                 model.set("errorMessage", "${runner} konnte nicht gefunden werden")
             }
 
         }
         return "adisplayUser"
+    }
+
+
+    @ExceptionHandler(Exception::class)
+    fun handleError(req: HttpServletRequest, ex: Exception): ModelAndView {
+        val modelAndView = ModelAndView()
+        modelAndView.addObject("exception", ex)
+        modelAndView.addObject("url", req.requestURI)
+        modelAndView.viewName = "error"
+        return modelAndView
     }
 
 }

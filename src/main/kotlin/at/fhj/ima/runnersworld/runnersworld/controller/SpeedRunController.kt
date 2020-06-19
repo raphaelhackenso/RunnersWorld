@@ -60,8 +60,8 @@ class SpeedRunController(val speedRunService: SpeedRunService, val gameService: 
         val searchContitions = listOf<Int?>(game, typeOfRun, platform)
 
 
-        //TODO Why does IntelliJ require the Elvis operator, even though it can never be null ?
         if (!searchContitions.contains(null)) {
+            // Why does IntelliJ require the Elvis operator, even though it can never be null ?
             val resultSpeedruns = speedRunService.rankSpeedRuns(game ?: 0, typeOfRun ?: 0, platform ?: 0)
 
             if (resultSpeedruns.isEmpty()) {
@@ -79,7 +79,7 @@ class SpeedRunController(val speedRunService: SpeedRunService, val gameService: 
         val auth = SecurityContextHolder.getContext().authentication
         if (auth is AnonymousAuthenticationToken || auth == null) {
             return "aSpeedRuns"
-        } else{
+        } else {
             return "listSpeedRuns"
         }
 
@@ -113,7 +113,6 @@ class SpeedRunController(val speedRunService: SpeedRunService, val gameService: 
 
         return "redirect:/displayUser"
     }
-
 
 
 }

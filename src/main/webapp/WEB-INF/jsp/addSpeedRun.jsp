@@ -10,7 +10,7 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <layout:page-container title="addSpeedRun" activePage="addSpeedRun">
-    <legend>Add SpeedRun</legend>
+    <legend>SpeedRun hinzufügen</legend>
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
 

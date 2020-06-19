@@ -30,12 +30,6 @@ class RunValidationService(val runValidationRepository: RunValidationRepository)
         runValidationRepository.save(runValidation)
     }
 
-    //TODO remove
-    @Transactional
-    fun saveAndFlush(runValidation: RunValidation){
-        runValidationRepository.saveAndFlush(runValidation)
-    }
-
 
     fun findAll(): List<RunValidation> {
         return runValidationRepository.findAll()
@@ -53,9 +47,5 @@ class RunValidationService(val runValidationRepository: RunValidationRepository)
         return runValidationRepository.findByRunId(id)
     }
 
-    //TODO remove
-    //fun validateRunValidation(runValidationID: Int, validator: User){
-      //  runValidationRepository.validateRunValidation(runValidationID, validator)
-    //}
 
 }

@@ -25,15 +25,17 @@ dependencies {
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
-	// MySQL
+	//MySQL
 	implementation("mysql:mysql-connector-java")
 
 	//JSP
 	compileOnly("org.apache.tomcat.embed:tomcat-embed-jasper")
 	implementation("javax.servlet:jstl")
 
+	//CSV
+	implementation("org.apache.commons:commons-csv:1.8")
+
 	//Spring Security
-	//TODO need the first one?
 	implementation("org.springframework.security:spring-security-taglibs")
 	implementation("org.springframework.boot:spring-boot-starter-security")
 

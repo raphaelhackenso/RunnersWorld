@@ -30,11 +30,41 @@ $(function () {
 });
 
 
-$(function(){
-    $("#adisplayUserSearch").on("keyup", function() {
+$(function () {
+    $("#adisplayUserSearch").on("keyup", function () {
         var value = $(this).val().toLowerCase();
-        $("#adisplayUserSpeedruns tr").filter(function() {
+        $("#adisplayUserSpeedruns tr").filter(function () {
             $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
         });
     });
 });
+
+
+$(function () {
+    $('#exportNewestRunsTable').on('click', function (e) {
+        $("#newestRunsTable").table2excel({
+            exclude: ".noExport",
+            name: "Newest Speedruns",
+            filename: "newestSpeedruns",
+            fileext: ".xls"
+        });
+    });
+
+    $('#exportRankSpeedRuns').on('click', function (e) {
+        $("#rankSpeedRunsTable").table2excel({
+            exclude: ".noExport",
+            name: $("#textGameName").val() + $("#textTypeOfRunName").val() + $("#textPlatformName").val(),
+            filename: $("#textGameName").val() + $("#textTypeOfRunName").val() + $("#textPlatformName").val(),
+            fileext: ".xls"
+        });
+    });
+
+    $('#exportRunnerRuns').on('click', function (e) {
+        $("#runnerRunsTable").table2excel({
+            exclude: ".noExport",
+            name: $("#runnerNameLegend").text(),
+            filename: $("#runnerNameLegend").text(),
+            fileext: ".xls"
+        });
+    });
+})

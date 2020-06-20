@@ -39,6 +39,10 @@ class WebSecurityConfig : WebSecurityConfigurerAdapter() {
                 .formLogin()
                 .defaultSuccessUrl("/listSpeedRuns")
                 .and()
+                .logout()
+                .logoutSuccessUrl("/aSpeedRuns")
+                .deleteCookies("JSESSIONID")
+                .and()
                 .rememberMe().key("uniqueAndSecret").userDetailsService(myUserDetailsService);
     }
 

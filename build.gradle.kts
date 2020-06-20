@@ -39,6 +39,8 @@ dependencies {
 	implementation("org.springframework.security:spring-security-taglibs")
 	implementation("org.springframework.boot:spring-boot-starter-security")
 
+	//Mail
+	implementation("org.springframework.boot:spring-boot-starter-mail")
 
 
 	testImplementation("org.springframework.boot:spring-boot-starter-test") {

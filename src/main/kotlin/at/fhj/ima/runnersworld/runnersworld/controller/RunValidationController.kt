@@ -1,5 +1,6 @@
 package at.fhj.ima.runnersworld.runnersworld.controller
 
+import at.fhj.ima.runnersworld.runnersworld.entity.RunValidation
 import at.fhj.ima.runnersworld.runnersworld.entity.Speedrun
 import at.fhj.ima.runnersworld.runnersworld.entity.User
 import at.fhj.ima.runnersworld.runnersworld.repository.RunValidationRepository
@@ -7,6 +8,8 @@ import at.fhj.ima.runnersworld.runnersworld.service.RunValidationService
 import at.fhj.ima.runnersworld.runnersworld.service.SpeedRunService
 import at.fhj.ima.runnersworld.runnersworld.service.UserService
 import org.springframework.dao.DataIntegrityViolationException
+import org.springframework.mail.MailSender
+import org.springframework.mail.SimpleMailMessage
 import org.springframework.security.access.annotation.Secured
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
@@ -15,12 +18,14 @@ import org.springframework.web.bind.annotation.ModelAttribute
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestMethod
 import org.springframework.web.bind.annotation.RequestParam
+import javax.mail.SendFailedException
 import javax.validation.Valid
 
 @Controller
 class RunValidationController(val runValidationService: RunValidationService,
                               val userService: UserService,
-                              val speedRunService: SpeedRunService) {
+                              val speedRunService: SpeedRunService,
+                              val mailSender: MailSender) {
 
 
     @RequestMapping("/listRunValidations", method = [RequestMethod.GET])
@@ -50,12 +55,36 @@ class RunValidationController(val runValidationService: RunValidationService,
             runValidationService.save(runValidation)
             speedRunService.saveValidDeny(validSpeedrun ?: Speedrun())
 
+            try{
+                sendMessageForValidation(runValidation, true)
+            } catch (e: Exception){
+                model.set("errorMessage", "Das Versenden der Mail an ${runValidation.speedrun?.runner?.username} hat nicht funktioniert!")
+                return listRunValidations(model, null)
+            }
+
+
         } catch (dive: DataIntegrityViolationException) {
             throw dive
         }
 
         model.set("message", "Speedrun Nr ${runValidation.speedrun?.id} wurde erfolgreich von ${validator.username} validiert")
         return listRunValidations(model, null)
+    }
+
+
+    fun sendMessageForValidation(runValidation: RunValidation, validated: Boolean) {
+        val message = SimpleMailMessage()
+        message.setTo((runValidation.speedrun?.runner?.username ?: "")+"@example.com")
+
+        if (validated) {
+            message.setSubject("Speedrun ${runValidation.speedrun?.id} validiert")
+            message.setText("${runValidation.validatedBy?.username} hat den Speedrun mit der ID: ${runValidation.speedrun?.id} vom ${runValidation.speedrun?.date} erfolgreich validiert.")
+        } else {
+            message.setSubject("Speedrun ${runValidation.speedrun?.id} abgelehnt")
+            message.setText("${runValidation.validatedBy?.username} hat den Speedrun mit der ID: ${runValidation.speedrun?.id} vom ${runValidation.speedrun?.date} abgelehnt.")
+        }
+
+        mailSender.send(message)
     }
 
 
@@ -74,6 +103,13 @@ class RunValidationController(val runValidationService: RunValidationService,
         try {
             runValidationService.save(runValidation)
             speedRunService.saveValidDeny(deniedSpeedrun ?: Speedrun())
+
+            try{
+                sendMessageForValidation(runValidation, false)
+            } catch (e: Exception){
+                model.set("errorMessage", "Das Versenden der Mail an ${runValidation.speedrun?.runner?.username} hat nicht funktioniert!")
+                return listRunValidations(model, null)
+            }
 
         } catch (dive: DataIntegrityViolationException) {
             throw dive

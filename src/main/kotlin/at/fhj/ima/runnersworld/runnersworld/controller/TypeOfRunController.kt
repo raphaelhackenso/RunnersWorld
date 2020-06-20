@@ -17,8 +17,6 @@ import javax.validation.Valid
 @Controller
 class TypeOfRunController(val typeOfRunService: TypeOfRunService) {
 
-//TODO -> update to be used with Services
-
     @RequestMapping("/listTypeOfRuns", method = [RequestMethod.GET])
     fun listTypeOfRuns(model: Model, @RequestParam(required = false) search: String?): String {
         if (search != null) {
@@ -32,7 +30,7 @@ class TypeOfRunController(val typeOfRunService: TypeOfRunService) {
     @RequestMapping("/changeTypeOfRun", method = [RequestMethod.POST])
     @Secured("ROLE_ADMIN")
     fun changeTypeOfRun(@ModelAttribute("typeOfRun") @Valid typeOfRun: TypeOfRun,
-                       bindingResult: BindingResult, model: Model): String {
+                        bindingResult: BindingResult, model: Model): String {
         if (bindingResult.hasErrors()) {
             return showEditTypeOfRunView(model)
         }

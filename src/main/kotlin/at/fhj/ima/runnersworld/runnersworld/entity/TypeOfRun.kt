@@ -9,17 +9,25 @@ import javax.persistence.Id
 import javax.validation.constraints.NotEmpty
 import javax.validation.constraints.NotNull
 
+/**
+ * The TypeOfRun class
+ *
+ * This class defines the types of Runs
+ *
+ *
+ * @property id the id of the type of Run.
+ * @property category the name of the category.
+ *
+ */
+
 @Entity
-class TypeOfRun (
+class TypeOfRun(
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         var id: Int? = null,
         @field:NotEmpty()
         @field:NotNull()
         var category: String? = null
-
-
-
 
 
 ) : Comparable<TypeOfRun>, Serializable {

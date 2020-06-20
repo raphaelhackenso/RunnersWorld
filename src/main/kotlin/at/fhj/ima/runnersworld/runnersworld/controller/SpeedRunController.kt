@@ -6,10 +6,7 @@ import at.fhj.ima.runnersworld.runnersworld.entity.Speedrun
 import at.fhj.ima.runnersworld.runnersworld.repository.GameRepository
 import at.fhj.ima.runnersworld.runnersworld.repository.PlatformRepository
 import at.fhj.ima.runnersworld.runnersworld.repository.TypeOfRunRepository
-import at.fhj.ima.runnersworld.runnersworld.service.GameService
-import at.fhj.ima.runnersworld.runnersworld.service.PlatformService
-import at.fhj.ima.runnersworld.runnersworld.service.RunValidationService
-import at.fhj.ima.runnersworld.runnersworld.service.SpeedRunService
+import at.fhj.ima.runnersworld.runnersworld.service.*
 import org.springframework.dao.DataIntegrityViolationException
 import org.springframework.data.domain.Sort
 import org.springframework.security.authentication.AnonymousAuthenticationToken
@@ -26,11 +23,10 @@ import javax.validation.Valid
 
 @Controller
 class SpeedRunController(val speedRunService: SpeedRunService, val gameService: GameService,
-                         val platformService: PlatformService, val typeOfRunRepository: TypeOfRunRepository,
+                         val platformService: PlatformService, val typeOfRunService: TypeOfRunService,
                          val runValidationService: RunValidationService
 ) {
 
-    //TODO -> update to be used with Services
 
     @RequestMapping("/addSpeedRun", method = [RequestMethod.GET])
     fun addSpeedRun(model: Model): String {
@@ -93,7 +89,7 @@ class SpeedRunController(val speedRunService: SpeedRunService, val gameService: 
     fun showListSpeedrun(model: Model) {
         model.set("games", gameService.findAll())
         model.set("platforms", platformService.findAll())
-        model.set("typeOfRuns", typeOfRunRepository.findAll()) //TODO update for service
+        model.set("typeOfRuns", typeOfRunService.findAll())
         model.set("speedRunsNew", speedRunService.findNewestValid("validated", 15))
     }
 

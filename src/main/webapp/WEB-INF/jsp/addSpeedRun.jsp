@@ -92,7 +92,7 @@
                     <div class="form-group">
                         <label for="inputURL" class="col-md-4 control-label">Validation URL*</label>
                         <div class="col-md-10">
-                            <form:input id="inputURL" path="validationURL" type="text" class="form-control"
+                            <form:input id="inputURL" path="validationURL" type="url" class="form-control"
                                         required="required" value="${speedrun.validationURL}"/>
                             <form:errors path="validationURL" cssClass="invalid-feedback d-block"/>
                         </div>

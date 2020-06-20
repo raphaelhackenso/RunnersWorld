@@ -27,9 +27,9 @@
         <c:if test="${not empty requestedRunner}">
             <div class="row">
                 <div class="col-md-12 col-md-offset-1">
-                    <div>
+                    <div class="d-flex">
                         <legend id="runnerNameLegend">Speedruns von ${requestedRunner.username}</legend>
-                        <button id="exportRunnerRuns" class="btn btn-link">
+                         <button id="exportRunnerRuns" class="btn btn-link">
                             <svg class="bi bi-download" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
                                  xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd"

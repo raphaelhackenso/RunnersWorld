@@ -47,7 +47,6 @@
 
         <div class="container" role="main">
         <div class="page-header">
-        <h1 id="headingBannerbottom">RunnersWorld</h1>
         <p></p>
         </div>
 

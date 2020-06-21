@@ -1,9 +1,14 @@
 INSERT INTO user(username,password,role) VALUES ('admin','$2a$10$e.fSjS5Ik7qWMtCPKf4ZD.Wqm5ow/5pqKVmIJT/7RsqNj7LLOPDs6', 'ROLE_ADMIN');
-INSERT INTO user(username,password,role) VALUES ('raphael','$2a$10$6LiihLlrWEXeCeOTAVS.k.0jNC8PecmDAaoKsjyVbMQ8Vb24YiL7i',  'ROLE_USER');
-
+INSERT INTO user(username,password,role) VALUES ('raphael','$2a$10$r1EaGxS3EE37WkRz7jwjSe3jjGPjle4R.hBfzqksWpnMLlRcbK7XG',  'ROLE_USER');
+INSERT INTO user(username,password,role) VALUES ('max','$2a$10$6wj.T2.LCkJh2CKTf/CpwevenTXBNUAYzdstUlIKy/57ObbSwHwSq',  'ROLE_USER');
+INSERT INTO user(username,password,role) VALUES ('clemens','$2a$10$Rl8mw/TOt2qIkOKcXVX9Ru3BmI.hJ.XPcKuTCjvCw0DPccBFyd9UW',  'ROLE_USER');
 
 INSERT INTO game(language, name, release_year, version) VALUES ('Japanisch', 'Super Mario 64', '1996.01.01', 1.0);
 INSERT INTO game(language, name, release_year, version) VALUES ('Englisch', 'Dark Souls', '2011.01.01', 1.0);
+-- Mario world snes
+-- witcher 3 PC
+-- shovel knight PC
+-- sonic 1 genesis
 
 
 

@@ -31,30 +31,32 @@
         <p></p>
 
         <sec:authorize access="hasAuthority('ROLE_ADMIN')">
-            <div class="row border border-success">
-                <legend>&nbsp; Admin Toolkit</legend>
-                <div class="col-md-3">
-                    <p>
-                        <a href="/listRunValidations" class="btn btn-success">Speedruns validieren</a>
-                    </p>
-                </div>
+            <div class="jumbotron border border-success">
+                <div class="row">
+                    <legend>&nbsp; Admin Toolkit</legend>
+                    <div class="col-md-3">
+                        <p>
+                            <a href="/listRunValidations" class="btn btn-success">Speedruns validieren</a>
+                        </p>
+                    </div>
 
-                <div class="col-md-3">
-                    <p>
-                        <a href="/listGames" class="btn btn-success">Spiele bearbeiten</a>
-                    </p>
-                </div>
+                    <div class="col-md-3">
+                        <p>
+                            <a href="/listGames" class="btn btn-success">Spiele bearbeiten</a>
+                        </p>
+                    </div>
 
-                <div class="col-md-3">
-                    <p>
-                        <a href="/listPlatform" class="btn btn-success">Plattformen bearbeiten</a>
-                    </p>
-                </div>
+                    <div class="col-md-3">
+                        <p>
+                            <a href="/listPlatform" class="btn btn-success">Plattformen bearbeiten</a>
+                        </p>
+                    </div>
 
-                <div class="col-md-3">
-                    <p>
-                        <a href="/listTypeOfRuns" class="btn btn-success">Typen bearbeiten</a>
-                    </p>
+                    <div class="col-md-3">
+                        <p>
+                            <a href="/listTypeOfRuns" class="btn btn-success">Typen bearbeiten</a>
+                        </p>
+                    </div>
                 </div>
             </div>
         </sec:authorize>

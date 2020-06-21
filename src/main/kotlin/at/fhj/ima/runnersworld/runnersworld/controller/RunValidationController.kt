@@ -55,10 +55,10 @@ class RunValidationController(val runValidationService: RunValidationService,
             runValidationService.save(runValidation)
             speedRunService.saveValidDeny(validSpeedrun ?: Speedrun())
 
-            try{
+            try {
                 sendMessageForValidation(runValidation, true)
-            } catch (e: Exception){
-                model.set("errorMessage", "Das Versenden der Mail an ${runValidation.speedrun?.runner?.username} hat nicht funktioniert!")
+            } catch (e: Exception) {
+                model.set("errorMessage", "Die Mail an ${runValidation.speedrun?.runner?.username} konnte nicht gesendet werden")
                 return listRunValidations(model, null)
             }
 
@@ -74,7 +74,7 @@ class RunValidationController(val runValidationService: RunValidationService,
 
     fun sendMessageForValidation(runValidation: RunValidation, validated: Boolean) {
         val message = SimpleMailMessage()
-        message.setTo((runValidation.speedrun?.runner?.username ?: "")+"@example.com")
+        message.setTo((runValidation.speedrun?.runner?.username ?: "") + "@example.com")
 
         if (validated) {
             message.setSubject("Speedrun ${runValidation.speedrun?.id} validiert")
@@ -104,9 +104,9 @@ class RunValidationController(val runValidationService: RunValidationService,
             runValidationService.save(runValidation)
             speedRunService.saveValidDeny(deniedSpeedrun ?: Speedrun())
 
-            try{
+            try {
                 sendMessageForValidation(runValidation, false)
-            } catch (e: Exception){
+            } catch (e: Exception) {
                 model.set("errorMessage", "Das Versenden der Mail an ${runValidation.speedrun?.runner?.username} hat nicht funktioniert!")
                 return listRunValidations(model, null)
             }

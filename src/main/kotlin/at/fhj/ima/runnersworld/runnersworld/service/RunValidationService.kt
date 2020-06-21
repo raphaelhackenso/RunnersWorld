@@ -26,7 +26,7 @@ class RunValidationService(val runValidationRepository: RunValidationRepository)
 
 
     @Transactional
-    fun save(runValidation: RunValidation){
+    fun save(runValidation: RunValidation) {
         runValidationRepository.save(runValidation)
     }
 
@@ -35,15 +35,15 @@ class RunValidationService(val runValidationRepository: RunValidationRepository)
         return runValidationRepository.findAll()
     }
 
-    fun findByRunValidationId(search: String): List<RunValidation>{
+    fun findByRunValidationId(search: String): List<RunValidation> {
         return runValidationRepository.findByRunValidationId(search)
     }
 
-    fun findAllPending(): List<RunValidation>{
+    fun findAllPending(): List<RunValidation> {
         return runValidationRepository.findAllPending()
     }
 
-    fun findByRunId(id: Int): RunValidation{
+    fun findByRunId(id: Int): RunValidation {
         return runValidationRepository.findByRunId(id)
     }
 

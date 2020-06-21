@@ -16,14 +16,15 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
                 <%--@elvariable id="typeOfRun" type="at.fhj.ima.runnnersworld.runnersworkd.entity.TypeOfRun"--%>
-            <form:form modelAttribute="typeOfRun" class="needs-validation form-horizontal" method="Post" action="changeTypeOfRun"
+            <form:form modelAttribute="typeOfRun" class="needs-validation form-horizontal" method="Post"
+                       action="changeTypeOfRun"
                        novalidate="novalidate">
                 <input type="hidden" name="id" value="<c:out value="${typeOfRun.id}"/>">
                 <fieldset>
 
                     <! ---------------- name ---------------- -->
                     <div class="form-group">
-                        <label for="inputCategory" class="col-md-2 control-label">Category</label>
+                        <label for="inputCategory" class="col-md-2 control-label">Kategorie</label>
                         <div class="col-md-10">
                             <form:input id="inputCategory" path="category" type="text" class="form-control"
                                         required="required"/>

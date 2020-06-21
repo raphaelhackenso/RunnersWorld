@@ -1,7 +1,6 @@
 package at.fhj.ima.runnersworld.runnersworld.converter
 
 
-
 import at.fhj.ima.runnersworld.runnersworld.entity.TypeOfRun
 import at.fhj.ima.runnersworld.runnersworld.repository.GameRepository
 import at.fhj.ima.runnersworld.runnersworld.repository.TypeOfRunRepository

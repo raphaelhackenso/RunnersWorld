@@ -33,7 +33,6 @@ class WebSecurityConfig : WebSecurityConfigurerAdapter() {
                 .antMatchers("/js/custom.js").permitAll()
 
 
-
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()

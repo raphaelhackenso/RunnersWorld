@@ -78,7 +78,7 @@ class UserController(val userService: UserService, val speedRunService: SpeedRun
                 model.set("requestedRunner", requestedRunner)
                 model.set("requestedRunnerSpeedruns", speedRunService.findAllValidSpeedrunsForUser(requestedRunner.id
                         ?: 0)) // The id cannot be null ?!
-            } catch (e: Exception) {
+            } catch (dive: DataIntegrityViolationException) {
                 model.set("errorMessage", "${runner} konnte nicht gefunden werden")
             }
 

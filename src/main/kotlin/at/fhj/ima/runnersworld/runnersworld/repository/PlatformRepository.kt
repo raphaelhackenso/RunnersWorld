@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository
 interface PlatformRepository : JpaRepository<Platform, Int> {
 
     @Query("FROM Platform WHERE LOWER(name) LIKE CONCAT('%',LOWER(:search), '%')")
-    fun findPlatformByName (@Param("search") search: String): List <Platform>
+    fun findPlatformByName(@Param("search") search: String): List<Platform>
 
     @Query("FROM Platform WHERE id = :id")
     fun findPlatformById(@Param("id") id: Int): Platform

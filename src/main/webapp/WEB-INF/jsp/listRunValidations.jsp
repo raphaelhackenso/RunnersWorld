@@ -13,7 +13,7 @@
 <layout:page-container title="listRunValidations" activePage="listRunValidations">
 
     <div class="row">
-        <div class="col-md-4">
+        <div>
             <form class="form-inline" method="get" action="listRunValidations">
                 <input class="form-control mr-sm-2" name="search" type="search" placeholder="Search"
                        aria-label="Search">
@@ -33,8 +33,8 @@
     </div>
 
     <p></p>
-    <div class="row">
-        <div class="col-md-10 col-md-offset-1">
+    <div class="row" id="genericTable">
+        <div class="col-md-12 col-md-offset-1">
             <legend>Alle ausstehenden Validierungen</legend>
 
             <table data-toggle="table" class="table table-striped">
@@ -65,7 +65,9 @@
                                            type="date"/>
                             <fmt:formatDate value="${parsedDate}" type="date" pattern="dd.MM.yyyy"/>
                         </td>
-                        <td><a href="adisplayUser?runner=${runValidation.speedrun.runner.username}">${runValidation.speedrun.runner.username}</a></td>
+                        <td>
+                            <a href="adisplayUser?runner=${runValidation.speedrun.runner.username}">${runValidation.speedrun.runner.username}</a>
+                        </td>
 
                         <td><a href=${runValidation.speedrun.validationURL}>URL</a></td>
                         <td>${runValidation.speedrun.notes}</td>

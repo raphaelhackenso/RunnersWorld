@@ -16,7 +16,7 @@
     <div class="container">
 
         <div class="row">
-            <div class="col-md-4">
+            <div>
                 <input class="form-control mr-sm-2" type="search" placeholder="Suchen"
                        aria-label="Search" id="adisplayUserSearch">
             </div>
@@ -25,11 +25,11 @@
         <p></p>
 
         <c:if test="${not empty requestedRunner}">
-            <div class="row">
+            <div class="row" id="genericTable">
                 <div class="col-md-12 col-md-offset-1">
                     <div class="d-flex">
                         <legend id="runnerNameLegend">Speedruns von ${requestedRunner.username}</legend>
-                         <button id="exportRunnerRuns" class="btn btn-link">
+                        <button id="exportRunnerRuns" class="btn btn-link">
                             <svg class="bi bi-download" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
                                  xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd"

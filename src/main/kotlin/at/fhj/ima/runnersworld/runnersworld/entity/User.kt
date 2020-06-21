@@ -20,7 +20,6 @@ import javax.validation.constraints.Size
  */
 
 
-
 enum class UserRole {
     ROLE_USER,
     ROLE_ADMIN
@@ -33,9 +32,9 @@ class User(
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         var id: Int? = null,
         @Column(nullable = false, unique = true)
-        @field:Size(min=2, max=240)
+        @field:Size(min = 2, max = 240)
         var username: String? = null,
-        @field:Size(min=2, max=240)
+        @field:Size(min = 2, max = 240)
         var password: String? = null,
         @Enumerated(EnumType.STRING)
         var role: UserRole? = null,

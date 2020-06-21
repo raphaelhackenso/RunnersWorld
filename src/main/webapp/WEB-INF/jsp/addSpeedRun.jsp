@@ -104,7 +104,7 @@
                         <label for="inputNotes" class="col-md-2 control-label">Notes</label>
                         <div class="col-md-10">
 
-                            <form:textarea path="notes" id="inputNotes" rows="5" />
+                            <form:textarea path="notes" id="inputNotes" rows="5"/>
 
                         </div>
                     </div>

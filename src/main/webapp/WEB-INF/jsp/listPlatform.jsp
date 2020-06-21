@@ -13,7 +13,7 @@
 <layout:page-container title="listPlatform" activePage="listPlatform">
 
     <div class="row">
-        <div class="col-md-4">
+        <div>
             <form class="form-inline" method="get" action="listPlatform">
                 <input class="form-control mr-sm-2" name="search" type="search" placeholder="Search"
                        aria-label="Search">
@@ -39,39 +39,37 @@
             </sec:authorize>
         </div>
     </div>
-        <div class="row">
-        <div class="col-md-6 col-md-offset-1">
-                <legend>Platformen in der Datenbank</legend>
+    <div class="row" id="genericTable">
+        <div class="col-md-12 col-md-offset-1">
+            <legend>Platformen in der Datenbank</legend>
 
-                <table data-toggle="table" class="table table-striped">
-                    <thead>
+            <table data-toggle="table" class="table table-striped">
+                <thead>
+                <tr>
+                    <th data-sortable="true">ID</th>
+                    <th data-sortable="true">Name</th>
+                    <sec:authorize access="hasAuthority('ROLE_ADMIN')">
+                        <th data-sortable="true">Aktionen</th>
+                    </sec:authorize>
+                </tr>
+                </thead>
+
+                <tbody>
+                <c:forEach items="${platform}" var="platform">
                     <tr>
-                        <th data-sortable="true">ID</th>
-                        <th data-sortable="true">Name</th>
-                        <sec:authorize access="hasAuthority('ROLE_ADMIN')">
-                            <th data-sortable="true">Aktionen</th>
-                        </sec:authorize>
+                        <td>${platform.id} </td>
+                        <td>${platform.name} </td>
+                        <td>
+                            <sec:authorize access="hasAuthority('ROLE_ADMIN')">
+                                <a href="editPlatform?id=${platform.id}" class="btn btn-xs btn-primary">Bearbeiten</a>
+                            </sec:authorize>
+                        </td>
                     </tr>
-                    </thead>
-
-                        <tbody>
-                            <c:forEach items="${platform}" var="platform">
-                                <tr>
-                                    <td>${platform.id} </td>
-                                    <td>${platform.name} </td>
-                                    <td>
-                                        <sec:authorize access="hasAuthority('ROLE_ADMIN')">
-                                            <a href="editPlatform?id=${platform.id}" class="btn btn-xs btn-primary">Bearbeiten</a>
-                                        </sec:authorize>
-                                    </td>
-                                </tr>
-                            </c:forEach>
-                        </tbody>
-                </table>
+                </c:forEach>
+                </tbody>
+            </table>
         </div>
     </div>
-
-
 
 
 </layout:page-container>

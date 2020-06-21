@@ -20,7 +20,7 @@
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
-        <a class="navbar-brand" href="/listSpeedRuns">RunnersWorld</a>
+        <a class="navbar-brand" href="/listSpeedRuns" id="headingBanner">RunnersWorld</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -47,7 +47,8 @@
 
         <div class="container" role="main">
         <div class="page-header">
-        <h1>RunnersWorld</h1>
+        <h1 id="headingBannerbottom">RunnersWorld</h1>
+        <p></p>
         </div>
 
         <!-- Messages ----------------------------------------------------------- -->

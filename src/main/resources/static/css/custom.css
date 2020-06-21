@@ -7,3 +7,34 @@ textarea {
     background-color: #ffffff;
     resize: none;
 }
+
+
+#headingBanner, #headingBannerbottom {
+    font-style: normal;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #70bc70;
+    font-weight: bold;
+}
+
+
+#rankingSpeedRuns {
+    border: 1px #70bc70 solid;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 5px 5px rgba(109, 136, 105, 0.31);
+}
+
+#newSpeedRuns {
+    border: 1px #b5bc60 solid;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 5px 5px rgba(136, 132, 66, 0.31);
+}
+
+#genericTable {
+    border: 1px rgba(13, 13, 6, 0.05) solid;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 5px 5px rgba(16, 13, 8, 0.03);
+}
+

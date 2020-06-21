@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository
 interface TypeOfRunRepository : JpaRepository<TypeOfRun, Int> {
 
     @Query("FROM TypeOfRun WHERE LOWER(category) LIKE CONCAT('%',LOWER(:search), '%')")
-    fun findTypeOfRunByName (@Param("search") search: String): List <TypeOfRun>
+    fun findTypeOfRunByName(@Param("search") search: String): List<TypeOfRun>
 
     @Query("FROM TypeOfRun WHERE id = :id")
     fun findTypeOfRunById(@Param("id") id: Int): TypeOfRun

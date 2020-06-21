@@ -12,11 +12,11 @@
 <layout:page-container-anonymous title="RegisterUser" activePage="registerUser">
 
 
-    <legend>Register User</legend>
+    <legend>User registrieren</legend>
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
 
-            <%--@elvariable id="user" type="at.fhj.ima.runnersworld.runnersworld.dto.UserDto"--%>
+                <%--@elvariable id="user" type="at.fhj.ima.runnersworld.runnersworld.dto.UserDto"--%>
             <form:form modelAttribute="user" class="needs-validation form-horizontal" method="post"
                        action="registerUserAccount" novalidate="novalidate">
                 <input type="hidden" name="id" value="<c:out value="${user.id}"/>">
@@ -25,7 +25,7 @@
 
                     <! ---------------- Username ---------------- -->
                     <div class="form-group">
-                        <label for="inputUsername" class="col-md-2 control-label">Username*</label>
+                        <label for="inputUsername" class="col-md-2 control-label">Benutzername*</label>
                         <div class="col-md-10">
                             <form:input id="inputUsername" path="username" type="text" class="form-control"
                                         required="required"/>
@@ -35,7 +35,7 @@
 
                     <! ---------------- Password ---------------- -->
                     <div class="form-group">
-                        <label for="inputPassword" class="col-md-2 control-label">Password*</label>
+                        <label for="inputPassword" class="col-md-2 control-label">Passwort*</label>
                         <div class="col-md-10">
                             <form:input id="inputPassword" path="password" type="password" class="form-control"
                                         required="required"/>
@@ -47,9 +47,10 @@
 
                     <! ---------------- Password Repeat ---------------- -->
                     <div class="form-group">
-                        <label for="inputPasswordRepeat" class="col-md-2 control-label">Repeat Password*</label>
+                        <label for="inputPasswordRepeat" class="col-md-4 control-label">Passwort wiederholen*</label>
                         <div class="col-md-10">
-                            <form:input id="inputPasswordRepeat" path="passwordRepeat" type="password" class="form-control"
+                            <form:input id="inputPasswordRepeat" path="passwordRepeat" type="password"
+                                        class="form-control"
                                         required="required"/>
                             <form:errors path="passwordRepeat" cssClass="invalid-feedback d-block"/>
 
@@ -60,8 +61,8 @@
                     <! ---------------- buttons ---------------- -->
                     <div class="form-group">
                         <div class="col-md-10 col-md-offset-2">
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                            <a href="listSpeedRuns" class="btn btn-default">Cancel</a>
+                            <button type="submit" class="btn btn-primary">Registrieren</button>
+                            <a href="listSpeedRuns" class="btn btn-default">Abbruch</a>
                         </div>
                     </div>
 

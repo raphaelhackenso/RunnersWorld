@@ -20,7 +20,7 @@
                        novalidate="novalidate">
                 <input type="hidden" name="id" value="<c:out value="${game.id}"/>">
                 <fieldset>
-                    <! ---------------- language ---------------- -->
+                <! ---------------- language ---------------- -->
                     <div class="form-group">
                         <label for="inputLanguage" class="col-md-2 control-label">Language</label>
                         <div class="col-md-10">

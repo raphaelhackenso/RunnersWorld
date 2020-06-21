@@ -1,4 +1,5 @@
 package at.fhj.ima.runnersworld.runnersworld.service
+
 import at.fhj.ima.runnersworld.runnersworld.entity.TypeOfRun
 import at.fhj.ima.runnersworld.runnersworld.repository.TypeOfRunRepository
 import org.springframework.data.domain.Sort
@@ -28,7 +29,7 @@ class TypeOfRunService(val typeOfRunRepository: TypeOfRunRepository) {
         typeOfRunRepository.save(typeOfRun)
     }
 
-    fun findTypeOfRunByName(search: String):List<TypeOfRun> {
+    fun findTypeOfRunByName(search: String): List<TypeOfRun> {
         return typeOfRunRepository.findTypeOfRunByName(search)
     }
 

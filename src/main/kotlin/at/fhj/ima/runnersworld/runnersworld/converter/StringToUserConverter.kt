@@ -1,7 +1,6 @@
 package at.fhj.ima.runnersworld.runnersworld.converter
 
 
-
 import at.fhj.ima.runnersworld.runnersworld.entity.User
 import at.fhj.ima.runnersworld.runnersworld.repository.UserRepository
 import org.springframework.core.convert.converter.Converter

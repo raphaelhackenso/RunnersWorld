@@ -1,4 +1,5 @@
 package at.fhj.ima.runnersworld.runnersworld.service
+
 import at.fhj.ima.runnersworld.runnersworld.entity.Game
 import at.fhj.ima.runnersworld.runnersworld.repository.GameRepository
 import org.springframework.data.domain.Sort
@@ -28,7 +29,7 @@ class GameService(val gameRepository: GameRepository) {
         gameRepository.save(game)
     }
 
-    fun findGameByName(search: String):List<Game> {
+    fun findGameByName(search: String): List<Game> {
         return gameRepository.findGameByName(search)
     }
 

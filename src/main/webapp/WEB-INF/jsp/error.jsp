@@ -9,9 +9,11 @@
 
 <layout:page-container-anonymous title="Error" activePage="error">
 
-    <h1>Error</h1>
+    <h1>Das war wohl zu schnell ...</h1>
+    <legend>Aber der Run ist noch nicht verloren, neu sammeln und weiter gehts</legend>
 
-    <p>Etwas ist beim Besichtigen von ${url} schiefgelaufen.</p>
+    <p></p>
+    <p>Etwas ist beim Besichtigen von ${url} ist schiefgelaufen.</p>
 
     <p>Dieses Problem ist aufgetreten: ${exception}</p>
 
